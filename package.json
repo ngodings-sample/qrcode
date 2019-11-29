@@ -17,7 +17,7 @@
     "@ngx-translate/http-loader": "0.1.0",
     "angular2-notifications": "^0.7.7",
     "angularfire2": "^4.0.0-rc0",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^3.4.1",
     "core-js": "^2.5.0",
     "firebase": "^3.9.0",
     "font-awesome": "^4.7.0",
