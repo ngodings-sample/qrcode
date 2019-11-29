@@ -1,0 +1,16 @@
+<simple-notifications [options]="options"></simple-notifications>
+<div class="col-md-2"></div>
+<div class="col-md-4 not-found">
+  <h1>404</h1>
+  <div class="blockquote primary">
+    Halaman tidak di temukan,
+    <br />Silahkan Kembali ke halaman awal
+  </div>
+</div>
+<div class="col-md-4 logo not-found" *ngFor="let website of (websites | async)">
+  <img class="navbar-logo" [src]="website.website_logo.downloadURL" />
+</div>
+<div class="col-md-2"></div>
+<div class="col-md-12 button-found">
+  <button routerLink="/admin/home" md-button md-raised-button class="not-found-button">Halaman Awal</button>
+</div>

@@ -1,0 +1,56 @@
+<div class="col-md-2 col-sm-12 col-xs-12"></div>
+<div class="col-md-8 col-sm-12 col-xs-12 margin-top-20">
+  <md-card>
+    <div class="md-card-title">
+      {{ Action }} {{ getTitle() }}
+      <button md-icon-button class="md-card-button"><i class="material-icons">{{ Icon }}</i></button>
+    </div>
+    <md-card-content>
+      <div class="table-responsive" *ngIf="barcodes | async; let barcode; else loading">
+        <table class="table-detail" *ngFor="let barcode of (barcodes | async)">
+          <tr>
+            <td class="primary middle" width="150">QR Code</td>
+            <td class="middle" width="50">:</td>
+            <td class="image">
+              <img [src]="barcode.barcode.downloadURL" />
+            </td>
+          </tr>
+          <tr>
+            <td class="primary" width="150">Barcode Id</td>
+            <td width="50">:</td>
+            <td>{{ barcode.barcode_id }}</td>
+          </tr>
+          <tr>
+            <td class="primary" width="150">Name</td>
+            <td width="50">:</td>
+            <td>{{ barcode.barcode_name }}</td>
+          </tr>
+          <tr>
+            <td class="primary" width="150">Created</td>
+            <td width="50">:</td>
+            <td>{{ barcode.barcode_created | date }}, {{ barcode.barcode_created | date:'hh:mm:ss a'}}</td>
+          </tr>
+          <tr>
+            <td class="primary" width="150">Last Modified</td>
+            <td width="50">:</td>
+            <td>{{ barcode.barcode_updated | date }}, {{ barcode.barcode_updated | date:'hh:mm:ss a'}}</td>
+          </tr>
+        </table>
+      </div>
+      <ng-template #loading>
+        <table class="table-detail">
+          <tr>
+            <td class="text-center" colspan="2">Loading Data...</td>
+          </tr>
+        </table>
+      </ng-template>
+    </md-card-content>
+    <div class="md-card-footer-detail" *ngFor="let barcode of (barcodes | async)">
+      <button class="primary" md-button md-raised-button color="primary" routerLink="/admin/barcode/update/{{ barcode.barcode_name }}">Edit</button>
+      <div class="action-right">
+        <button md-button md-raised-button routerLink="/admin/barcode/view">View {{getTitle()}}</button>
+      </div>
+    </div>
+  </md-card>
+</div>
+<div class="col-md-2 col-sm-12 col-xs-12"></div>

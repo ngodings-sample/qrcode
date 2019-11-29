@@ -1,0 +1,328 @@
+<div class="col-md-2 col-sm-12 col-xs-12">
+</div>
+<div class="col-md-8 col-sm-12 col-xs-12 margin-top-20">
+  <md-card>
+    <div class="md-card-title">
+      {{ Action }} {{ getTitle() }}
+      <button md-icon-button class="md-card-button"><i class="material-icons md-10">{{ Icon }}</i></button>
+    </div>
+    <md-card-content>
+      <form [formGroup]="form" autocomplete="off" novalidate>
+        <table class="table-create margin-top-30">
+          <tr>
+            <td>
+              <fieldset>
+                <div class="col-md-6 padding-left-none">
+                  <label class="input">Website Name</label>
+                  <input class="input" type="text" formControlName="website_name" name="website_name" [maxlength]="25">
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_name').hasError('required') && form.get('website_name').touched">
+                    Website name is required
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_name').hasError('minlength')">
+                    Minimum of 4 characters
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_name').hasError('maxlength')">
+                    Maximum of 25 characters
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 padding-right-none">
+                  <label class="input m-margin-top-20">Website Author</label>
+                  <input class="input" type="text" formControlName="website_author" name="website_author" [maxlength]="30">
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_author').hasError('required') && form.get('website_author').touched">
+                    Website author is required
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_author').hasError('minlength')">
+                    Minimum of 4 characters
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_author').hasError('maxlength')">
+                    Maximum of 30 characters
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset>
+                <label class="input margin-top-20">Website Description</label>
+                <textarea type="text" class="input" mdInput formControlName="website_description" name="website_description" [maxlength]="500"></textarea>
+                <div class="information-error" contextmenu="" *ngIf="form.get('website_description').hasError('required') && form.get('website_description').touched">
+                  Website Description is required
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+                <div class="information-error" contextmenu="" *ngIf="form.get('website_description').hasError('minlength')">
+                  Minimum of 4 characters
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+                <div class="information-error" contextmenu="" *ngIf="form.get('website_description').hasError('maxlength')">
+                  Maximum of 500 characters
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset>
+                <label class="input margin-top-20">Website Keyword</label>
+                <textarea type="text" class="input" mdInput formControlName="website_keyword" name="website_keyword" [maxlength]="500"></textarea>
+                <div class="information-error" contextmenu="" *ngIf="form.get('website_keyword').hasError('required') && form.get('website_keyword').touched">
+                  Website Keyword is required
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+                <div class="information-error" contextmenu="" *ngIf="form.get('website_keyword').hasError('minlength')">
+                  Minimum of 4 characters
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+                <div class="information-error" contextmenu="" *ngIf="form.get('website_keyword').hasError('maxlength')">
+                  Maximum of 500 characters
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset>
+                <div class="col-md-6 padding-left-none">
+                  <label class="input margin-top-20">Website Facebook</label>
+                  <input class="input" type="url" formControlName="website_facebook" name="website_facebook" [maxlength]="50">
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_facebook').hasError('required') && form.get('website_facebook').touched">
+                    Website facebook is required
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_facebook').errors?.url">
+                    Please enter valid Url<br />Example : http://google.com
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_facebook').hasError('maxlength')">
+                    Maximum of 50 characters
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 padding-right-none">
+                  <label class="input margin-top-20">Website Github</label>
+                  <input class="input" type="text" formControlName="website_github" name="website_github" [maxlength]="50">
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_github').hasError('required') && form.get('website_github').touched">
+                    Website Github is required
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_github').errors?.url">
+                    Please enter valid Url<br />Example : http://google.com
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_github').hasError('maxlength')">
+                    Maximum of 50 characters
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset>
+                <div class="col-md-6 padding-left-none">
+                  <label class="input margin-top-20">Website Instagram</label>
+                  <input class="input" type="text" formControlName="website_instagram" name="website_instagram" [maxlength]="50">
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_instagram').hasError('required') && form.get('website_instagram').touched">
+                    Website instagram is required
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_instagram').errors?.url">
+                    Please enter valid Url<br />Example : http://google.com
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_instagram').hasError('maxlength')">
+                    Maximum of 50 characters
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 padding-right-none">
+                  <label class="input margin-top-20">Website Youtube</label>
+                  <input class="input" type="text" formControlName="website_youtube" name="website_youtube" [maxlength]="100">
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_youtube').hasError('required') && form.get('website_youtube').touched">
+                    Website youtube is required
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_youtube').errors?.url">
+                    Please enter valid Url<br />Example : http://google.com
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_youtube').hasError('maxlength')">
+                    Maximum of 100 characters
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset>
+                <div class="col-md-4 padding-left-none">
+                  <label class="input margin-top-20">Website Phone Number</label>
+                  <input class="input" type="text" formControlName="website_phonenumber" name="website_phonenumber" [maxlength]="13">
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_phonenumber').hasError('required') && form.get('website_phonenumber').touched">
+                    Website phone number is required
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_phonenumber').hasError('minlength')">
+                    Minimum of 12 characters
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_phonenumber').hasError('maxlength')">
+                    Maximum of 13 characters
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-8 padding-right-none">
+                  <label class="input margin-top-20">Website Address</label>
+                  <input class="input" type="text" formControlName="website_address" name="website_address" [maxlength]="100">
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_address').hasError('required') && form.get('website_address').touched">
+                    Website address is required
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_address').hasError('minlength')">
+                    Minimum of 10 characters
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_address').hasError('maxlength')">
+                    Maximum of 100 characters
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset>
+                <div class="col-md-4 padding-left-none">
+                  <label class="input margin-top-20">Website Post</label>
+                  <select class="input" formControlName="website_post" name="website_post">
+                    <option value="2010">2010</option>
+                    <option value="2011">2011</option>
+                    <option value="2012">2012</option>
+                    <option value="2013">2013</option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                  </select>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('website_post').hasError('required') && form.get('website_post').touched">
+                    Website Post is required
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-8 padding-right-none">
+
+                  <label class="input margin-top-20">Website Logo</label>
+                  <input id="file" name="file" type="file" class="file file-input" ngFileSelect (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput">
+                  <div *ngFor="let file of files">
+                    <div *ngIf="file.type != 'image/png'">
+
+                      <div *ngIf="fileName === file.name" class="information-error" contextmenu="">
+                        Foto berformat .png
+                        <div class="right">
+                          <i class="material-icons md-14 middle">warning</i>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div *ngIf="file.size/1024 /1024 >= 5">
+
+                      <div *ngIf="fileName === file.name" class="information-error" contextmenu="">
+                        File tidak lebih dari 5Mb
+                        <div class="right">
+                          <i class="material-icons md-14 middle">warning</i>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div *ngFor="let file of files">
+                    <div *ngIf="file.type === 'image/png' && file.size/1024 /1024 <= 5">
+                      <div *ngIf="fileName === file.name" class="information-success" contextmenu="">
+                        <div class="right">
+                          <i class="material-icons md-14 middle">check</i>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset *ngIf="upload === 'Please wait...'">
+                <label class="input margin-top-20 margin-bottom-5">{{ upload }}</label>
+                <md-progress-bar [mode]="mode"></md-progress-bar>
+              </fieldset>
+              <div class="full margin-top-20">
+                <button (click)="check()" [disabled]="disabled === 'true' || files.length === 0" md-button color="primary" class="primary">Check</button>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </md-card-content>
+
+
+    <div class="md-card-footer">
+
+      <span *ngIf="checkdone ==='true'">
+        <span  *ngFor="let file of files" >
+      <button *ngIf="fileName === file.name"  class="primary" md-button md-raised-button color="primary" [disabled]="!form.valid || disabled==='true' || file.type != 'image/png'  || file.size/1024 /1024 >= 5" (click)="save(file.size)">Create</button>
+  </span></span>
+      <button [disabled]="disabled==='true'" md-button md-raised-button class="reset" color="default" (click)="reset()">Reset</button>
+      <div class="action-right">
+        <button [disabled]="disabled==='true'" md-button md-raised-button routerLink="/admin/website/view">View {{getTitle()}}</button>
+      </div>
+    </div>
+  </md-card>
+</div>
+<div class="col-md-2 col-sm-12 col-xs-12">
+</div>

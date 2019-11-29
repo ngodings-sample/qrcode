@@ -1,0 +1,53 @@
+<div class="col-md-2 col-sm-12 col-xs-12"></div>
+<div class="col-md-8 col-sm-12 col-xs-12 margin-top-20">
+  <md-card>
+    <div class="md-card-title">
+      {{ Action }} {{ getTitle() }}
+      <button md-icon-button class="md-card-button"><i class="material-icons">{{ Icon }}</i></button>
+    </div>
+    <md-card-content>
+      <div class="table-responsive" *ngIf="(menubackends | async); let menubackend; else loading">
+        <table class="table-detail" *ngFor="let menubackend of (menubackends | async)">
+          <tr>
+            <td class="primary" width="150">Menu</td>
+            <td width="50">:</td>
+            <td>{{ menubackend.menu_name | titlecase}}</td>
+          </tr>
+          <tr>
+            <td class="primary top" width="150">Submenu</td>
+            <td class="top" width="50">:</td>
+            <td>
+              <div class="list-plus" *ngFor="let sunmenubackend of menubackend.Data">
+                <i class="material-icons md-10 middle">check</i> {{ (sunmenubackend | async)?.submenu_name | titlecase }}
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="primary" width="150">Created</td>
+            <td width="50">:</td>
+            <td>{{ menubackend.menu_created | date }}, {{ menubackend.menu_created | date:'hh:mm:ss a' }}</td>
+          </tr>
+          <tr>
+            <td class="primary" width="150">Last Modified</td>
+            <td width="50">:</td>
+            <td>{{ menubackend.menu_updated | date }}, {{ menubackend.menu_updated | date:'hh:mm:ss a' }}</td>
+          </tr>
+        </table>
+      </div>
+      <ng-template #loading>
+        <table class="table-detail">
+          <tr>
+            <td class="text-center" colspan="2">Loading Data...</td>
+          </tr>
+        </table>
+      </ng-template>
+    </md-card-content>
+    <div class="md-card-footer-detail" *ngFor="let menubackend of (menubackends | async)">
+      <button md-button md-raised-button class="primary" routerLink="/admin/menu/update/{{ menubackend.menu_name }}">Edit</button>
+      <div class="action-right">
+        <button md-button md-raised-button routerLink="/admin/menu/view">View {{getTitle()}}</button>
+      </div>
+    </div>
+  </md-card>
+</div>
+<div class="col-md-2 col-sm-12 col-xs-12"></div>

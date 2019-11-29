@@ -1,0 +1,80 @@
+@import '../../../../assets/styles/color';
+@mixin home($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  md-card.primary {
+    md-card-title {}
+
+    p {
+      color: $grey-600;
+    }
+
+    .icon {
+      color: mat-color($primary-light);
+    }
+  }
+
+  md-card.red {
+    md-card-title {}
+
+    p {
+      color: $grey-600;
+    }
+
+    .icon {
+      color: $red-700;
+    }
+  }
+
+  md-card.blue {
+    md-card-title {}
+
+    p {
+      color: $grey-600;
+    }
+
+    .icon {
+      color: $blue-700;
+    }
+  }
+
+  md-card.yellow {
+    md-card-title {}
+
+    p {
+      color: $grey-600;
+    }
+
+    .icon {
+      color: $yellow-700;
+    }
+  }
+
+  md-card.blue {
+    md-card-title {}
+
+    p {
+      color: $grey-600;
+    }
+
+    .icon {
+      color: $blue-700;
+    }
+  }
+
+  md-card.cyan {
+    md-card-title {}
+
+    p {
+      color: $grey-600;
+    }
+
+    .icon {
+      color: $cyan-700;
+    }
+  }
+}

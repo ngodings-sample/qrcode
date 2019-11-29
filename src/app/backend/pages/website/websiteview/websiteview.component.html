@@ -1,0 +1,121 @@
+<div class="col-md-8 col-sm-12 col-xs-12">
+  <simple-notifications [options]="options"></simple-notifications>
+  <md-card>
+    <div class="md-card-title">
+      {{ Action }} {{ getTitle() }}
+      <div *ngIf="(websites | async)?.length > 0">
+        <button *ngFor="let website of (websites | async)" (click)="deleteDialog(website.$key, website.website_name, website.website_logo.fullPath)" mdTooltip="Delete website : {{website.website_name}}" [mdTooltipPosition]="positionRight" md-icon-button class="md-card-button warn"><i class="material-icons">delete</i></button>
+      </div>
+    </div>
+    <md-card-content>
+      <div class="table-responsive" *ngIf="(websites | async); let website; else loading">
+        <table class="table-detail" *ngFor="let website of (websites | async)">
+          <tr>
+            <td width="170" class="primary">Name</td>
+            <td width="50">:</td>
+            <td>{{ website.website_name | titlecase }}</td>
+          </tr>
+          <tr>
+            <td class="primary">Author</td>
+            <td>:</td>
+            <td>{{ website.website_author | titlecase }}</td>
+          </tr>
+          <tr>
+            <td class="primary">Description</td>
+            <td>:</td>
+            <td>{{ website.website_description | titlecase }}</td>
+          </tr>
+          <tr>
+            <td class="primary">Keyword</td>
+            <td>:</td>
+            <td>{{ website.website_keyword | titlecase }}</td>
+          </tr>
+          <tr>
+            <td class="primary">Facebook</td>
+            <td>:</td>
+            <td><a target="_blank" href="{{ website.website_facebook }}">{{ website.website_facebook }}</a></td>
+          </tr>
+          <tr>
+            <td class="primary">Github</td>
+            <td>:</td>
+            <td><a target="_blank" href="{{ website.website_github }}">{{ website.website_github }}</a></td>
+          </tr>
+          <tr>
+            <td class="primary">Instagram</td>
+            <td>:</td>
+            <td><a target="_blank" href="{{ website.website_instagram }}">{{ website.website_instagram }}</a></td>
+          </tr>
+          <tr>
+            <td class="primary">Youtube</td>
+            <td>:</td>
+            <td><a target="_blank" href="{{ website.website_youtube }}">{{ website.website_youtube }}</a></td>
+          </tr>
+          <tr>
+            <td class="primary">Phone Number</td>
+            <td>:</td>
+            <td>{{ website.website_phonenumber }}</td>
+          </tr>
+          <tr>
+            <td class="primary">Address</td>
+            <td>:</td>
+            <td>{{ website.website_address | titlecase }}</td>
+          </tr>
+          <tr>
+            <td class="primary">Website Post</td>
+            <td>:</td>
+            <td>{{ website.website_post }}</td>
+          </tr>
+          <tr>
+            <td class="primary">Created</td>
+            <td>:</td>
+            <td>{{ website.website_created | date }}, {{ website.website_created | date:'hh:mm a'}}</td>
+          </tr>
+          <tr>
+            <td class="primary">Last Modified</td>
+            <td>:</td>
+            <td>{{ website.website_updated | date }}, {{ website.website_updated | date:'hh:mm a'}}</td>
+          </tr>
+        </table>
+        <table class="table-detail">
+          <tr *ngIf="(websites | async)?.length === 0">
+            <td class="text-center" colspan="2">Data is still empty</td>
+          </tr>
+        </table>
+      </div>
+      <ng-template #loading>
+        <div class="table-responsive">
+          <table class="table-detail">
+            <tr>
+              <td class="text-center" colspan="2">Loading Data...</td>
+            </tr>
+          </table>
+        </div>
+      </ng-template>
+    </md-card-content>
+    <div class="md-card-footer-detail">
+      <button class="primary" *ngIf="(websites | async)?.length < 1" md-button md-raised-button routerLink="/admin/website/create">Add {{getTitle()}}</button>
+      <span *ngFor="let website of (websites | async)">
+        <button class="primary" *ngIf="(websites | async)?.length > 0" md-button md-raised-button routerLink="/admin/website//update/{{ website.website_name }}">Edit</button>
+      </span>
+    </div>
+  </md-card>
+</div>
+<div class="col-md-4 col-sm-6 col-xs-12" *ngIf="(websites | async)?.length > 0">
+  <md-card class="website-md-card-logo">
+    <div class="md-card-title">
+      <i class="left material-icons md-24 margin-right-10 margin-top-2">photo</i>Website Logo
+    </div>
+    <md-card-content>
+      <div *ngFor="let website of (websites | async)">
+        <div class="image-card">
+          <img [src]="website.website_logo.downloadURL" mdTooltip="{{ website.website_logo.fileName }}" [mdTooltipPosition]="positionRight" />
+        </div>
+      </div>
+    </md-card-content>
+    <div class="md-card-footer-detail text-center">
+      <span *ngFor="let website of (websites | async)">
+        <button class="primary" md-button md-raised-button routerLink="/admin/website//updateimage/{{ website.website_name }}">Change Logo</button>
+      </span>
+    </div>
+  </md-card>
+</div>

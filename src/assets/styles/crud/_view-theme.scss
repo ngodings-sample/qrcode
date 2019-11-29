@@ -1,0 +1,390 @@
+@import '../color';
+@import '../constants';
+@mixin view($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .list-plus {
+    i {
+      color: $green-700;
+    }
+  }
+
+  .action-top {
+    .search-view-icon {
+      i {
+        color: $grey-500;
+      }
+    }
+
+    .search-view {
+      input.input {
+        background: transparent;
+      }
+    }
+  }
+  .md-card-footer-viewz {
+    background: $grey-50;
+
+
+    border-left: 1px solid #DADADA;
+    span {
+      color: $grey-600;
+    }
+  }
+  .md-card-footer-view {
+    background: $grey-50;
+
+    span {
+      color: $grey-600;
+    }
+  }
+  .table-view.sampel {
+    tbody {
+      tr {
+        td {
+          text-align: center;
+          border-right: 1px solid #DADADA;
+        }
+        td:last-child {
+          border-right: 0;
+        }
+      }
+    }
+  }
+  .table-view {
+    thead {
+      tr {
+        color: $grey-800;
+        border-bottom: 1px solid #DADADA;
+        border-top: 1px solid #DADADA;
+        background: $grey-50;
+      }
+      a {
+        color: $grey-800;  }
+        a:hover {
+          color: $grey-900;  }
+    }
+
+    tbody {
+      tr.bg-green {
+        background: $green-50 !important;
+      }
+      tr {
+
+        td.bg-red {
+          background: $red-50 !important;
+        }
+        td.txt-green {
+        color:$green-700
+        }
+        td {
+          color: $grey-600;
+          border-bottom: 1px solid #DADADA;
+
+          .plus {
+            background: mat-color($primary-light);
+            color: $white;
+
+            .md-button-focus-overlay {
+              background-color: transparent;
+            }
+          }
+
+          [disabled].plus {
+            background: #eee;
+            color: #888;
+          }
+
+          [disabled].plus:hover {
+            background: #eee;
+            color: #888;
+          }
+
+          .plus:hover {
+            background: mat-color($primary);
+            transition: all 0.4s ease-in-out;
+            -moz-transition: all 0.4s ease-in-out;
+            -webkit-transition: all 0.4s ease-in-out;
+            -o-transition: all 0.4s ease-in-out;
+          }
+
+          .list-plus {
+            span {
+              color:$red-700;
+            }
+            .light-plus-delete {
+              i {
+                color: mat-color($primary-light);
+                font-size: 12px;
+              }
+            }
+
+            i {
+              color: $green-700;
+            }
+          }
+        }
+      }
+
+      tr:hover {
+        background: $grey-50;
+      }
+    }
+
+    .md-card-button {
+      background: transparent;
+
+      .md-button-focus-overlay {
+        background-color: transparent;
+      }
+
+      i {
+        color: mat-color($primary-light);
+      }
+    }
+
+    [disabled].md-card-button {
+      background: transparent;
+
+      .md-button-focus-overlay {
+        background-color: transparent;
+      }
+
+      i {
+        color: #888;
+      }
+    }
+
+    [disabled].md-card-button:hover {
+      background: transparent;
+
+      .md-button-focus-overlay {
+        background-color: transparent;
+      }
+
+      i {
+        color: #888;
+      }
+    }
+
+    .md-card-button:hover {
+      background: $grey-200;
+      transition: background 0.2s ease-in-out;
+      -moz-transition: background 0.2s ease-in-out;
+      -webkit-transition: background 0.2s ease-in-out;
+      -o-transition: background 0.2s ease-in-out;
+
+      i {
+        color: mat-color($primary);
+      }
+    }
+
+    .md-card-button.red {
+      background: transparent;
+
+      .md-button-focus-overlay {
+        background-color: transparent;
+      }
+
+      i {
+        color: $red;
+      }
+    }
+
+    .md-card-button.red:hover {
+      background: $grey-200;
+      transition: background 0.2s ease-in-out;
+      -moz-transition: background 0.2s ease-in-out;
+      -webkit-transition: background 0.2s ease-in-out;
+      -o-transition: background 0.2s ease-in-out;
+
+      i {
+        color: $red-600;
+      }
+    }
+  }
+
+  .table-viewz {
+    thead {
+      tr {
+        color: $grey-800;
+        border-bottom: 1px solid #DADADA;
+        border-top: 1px solid #DADADA;
+        border-left: 1px solid #DADADA;
+        background: $grey-50;
+
+      }
+      a {
+        color: $grey-800;  }
+        a:hover {
+          color: $grey-900;  }
+    }
+
+    tbody {
+      tr.bg-green {
+        background: $green-50 !important;
+      }
+      tr {
+          span {
+              color: $grey-800;
+          }
+
+        td.bg-red {
+          background: $red-50 !important;
+        }
+        td.txt-green {
+        color:$green-700
+        }
+                  td:first-child {
+
+                              border-left: 1px solid #DADADA;
+                  }
+        td {
+          color: $grey-600;
+          border-bottom: 1px solid #DADADA;
+
+          .plus {
+            background: mat-color($primary-light);
+            color: $white;
+
+            .md-button-focus-overlay {
+              background-color: transparent;
+            }
+          }
+
+          [disabled].plus {
+            background: #eee;
+            color: #888;
+          }
+
+          [disabled].plus:hover {
+            background: #eee;
+            color: #888;
+          }
+
+          .plus:hover {
+            background: mat-color($primary);
+            transition: all 0.4s ease-in-out;
+            -moz-transition: all 0.4s ease-in-out;
+            -webkit-transition: all 0.4s ease-in-out;
+            -o-transition: all 0.4s ease-in-out;
+          }
+
+          .list-plus {
+            span {
+              color:$red-700;
+            }
+            .light-plus-delete {
+              i {
+                color: mat-color($primary-light);
+                font-size: 12px;
+              }
+            }
+
+            i {
+              color: $green-700;
+            }
+          }
+        }
+      }
+      tr.activecourses {
+        background: mat-color($primary-light);
+
+        span {
+          color:$white;
+        }
+      }
+      tr.activecourses:hover {
+        background: mat-color($primary-light) !important;
+
+        span {
+          color:$white !important;
+        }
+      }
+      tr:hover {
+          background: $grey-50;
+      }
+      tr.courses:hover {
+          background: $grey-50;
+        span{
+        }
+      }
+    }
+
+    .md-card-button {
+      background: transparent;
+
+      .md-button-focus-overlay {
+        background-color: transparent;
+      }
+
+      i {
+        color: mat-color($primary-light);
+      }
+    }
+
+    [disabled].md-card-button {
+      background: transparent;
+
+      .md-button-focus-overlay {
+        background-color: transparent;
+      }
+
+      i {
+        color: #888;
+      }
+    }
+
+    [disabled].md-card-button:hover {
+      background: transparent;
+
+      .md-button-focus-overlay {
+        background-color: transparent;
+      }
+
+      i {
+        color: #888;
+      }
+    }
+
+    .md-card-button:hover {
+      background: $grey-200;
+      transition: background 0.2s ease-in-out;
+      -moz-transition: background 0.2s ease-in-out;
+      -webkit-transition: background 0.2s ease-in-out;
+      -o-transition: background 0.2s ease-in-out;
+
+      i {
+        color: mat-color($primary);
+      }
+    }
+
+    .md-card-button.red {
+      background: transparent;
+
+      .md-button-focus-overlay {
+        background-color: transparent;
+      }
+
+      i {
+        color: $red;
+      }
+    }
+
+    .md-card-button.red:hover {
+      background: $grey-200;
+      transition: background 0.2s ease-in-out;
+      -moz-transition: background 0.2s ease-in-out;
+      -webkit-transition: background 0.2s ease-in-out;
+      -o-transition: background 0.2s ease-in-out;
+
+      i {
+        color: $red-600;
+      }
+    }
+  }
+}

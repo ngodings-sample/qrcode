@@ -1,0 +1,114 @@
+@import '../../../../assets/styles/color';
+@mixin navbar($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  app-navbar {
+    color: $white;
+
+    .navbar {
+      background: mat-color($primary);
+      -webkit-box-shadow: 0 1px 5px 0 rgba(0,0,0,0.85);
+      -moz-box-shadow: 0 1px 5px 0 rgba(0,0,0,0.85);
+      box-shadow: 0 1px 5px 0 rgba(0,0,0,0.85);
+
+      a {
+        color: $white;
+
+        .mat-button-focus-overlay {
+          background-color: transparent;
+        }
+
+        .mat-ripple {
+          background-color: transparent;
+          display: none;
+        }
+      }
+
+      a:active {
+        opacity: 0.8;
+
+        .mat-button-focus-overlay {
+          background-color: transparent;
+        }
+
+        .mat-ripple {
+          background-color: transparent;
+          display: none;
+        }
+      }
+
+      a:hover {
+        .mat-button-focus-overlay {
+          background-color: transparent;
+        }
+      }
+
+      a:focus {
+        outline: none;
+        text-decoration: none;
+
+        .mat-button-focus-overlay {
+          background-color: transparent;
+        }
+      }
+
+      .navbar-filler {
+        button[md-icon-button] {
+          background: transparent;
+
+          .mat-button-focus-overlay {
+            background-color: transparent;
+          }
+        }
+
+        button[md-icon-button]:hover {
+          background: transparent;
+
+          .mat-button-focus-overlay {
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+
+  .menu-button {
+    button.primary {
+      background: mat-color($primary-light);
+      color: $white;
+
+      .mat-button-focus-overlay {
+        background-color: transparent;
+      }
+    }
+
+    button.primary:hover {
+      background: mat-color($primary);
+      transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -webkit-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+    }
+
+    button.warn {
+      background: $red-400;
+      color: $white;
+
+      .mat-button-focus-overlay {
+        background-color: transparent;
+      }
+    }
+
+    button.warn:hover {
+      background: $red;
+      transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -webkit-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+@import '../../assets/styles/variables';
+@import '../../assets/styles/constants';
+@import '../../assets/styles/color';
+$sidenav-spacing-unit: 8px;
+$sidenav-width: 240px;
+
+app-navbar {
+  width: $full;
+  z-index: 10;
+  position: absolute;
+}
+
+md-sidenav-container {
+  height: $full;
+  width: $full;
+  background: $grey-100;
+  padding-top: 50px !important;
+  padding-bottom: -50px !important;
+}
+
+md-sidenav.mat-sidenav-opened,
+md-sidenav.mat-sidenav-opening {
+  box-shadow: 3px 0 6px 0 rgba(0, 0, 0, .25);
+}
+
+md-sidenav {
+  margin-top: 50px;
+  width: $sidenav-width;
+  min-height: $full;
+  padding-bottom: 100px;
+}
+
+.content {
+  margin: 100px 80px 20px;
+  height: $full;
+  @media (max-width: $tablet) {
+    margin: 40px 20px 20px;
+  }
+  @media (max-width: $phone) {
+    margin: 40px 10px 20px;
+  }
+  @media (max-width: $small-phone) {
+    margin: 40px 5px 20px;
+  }
+}
+
+.language {
+  margin-top: -65px;
+}

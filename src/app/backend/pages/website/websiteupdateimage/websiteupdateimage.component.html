@@ -1,0 +1,74 @@
+<div class="col-md-2 col-sm-12 col-xs-12"></div>
+<div class="col-md-8 col-sm-12 col-xs-12 margin-top-20">
+  <md-card>
+    <div class="md-card-title">
+      {{ Action }} {{ getTitle() }}
+      <button md-icon-button class="md-card-button"><i class="material-icons">{{ Icon }}</i></button>
+    </div>
+    <md-card-content>
+      <form [formGroup]="form" autocomplete="off" novalidate>
+        <table class="table-create margin-top-30">
+          <tr>
+            <td>
+              <div class="image text-center">
+                <img [src]="downloadURL" />
+                <p>
+                  <i class="material-icons md-18 middle margin-right-5">photo</i> {{ filesName }}
+                </p>
+              </div>
+              <label class="input">Website Logo</label>
+              <input id="file" name="file" type="file" class="file file-input" ngFileSelect (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput">
+              <div *ngFor="let file of files">
+                <div *ngIf="file.type != 'image/png'">
+                  <div *ngIf="fileName === file.name" class="information-error" contextmenu="">
+                    Foto berformat .png
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="file.size/1024 /1024 >= 5">
+                  <div *ngIf="fileName === file.name" class="information-error" contextmenu="">
+                    File tidak lebih dari 5Mb
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngFor="let file of files">
+                <div *ngIf="file.type === 'image/png' && file.size/1024 /1024 <= 5">
+                  <div *ngIf="fileName === file.name" class="information-success" contextmenu="">
+                    <div class="right">
+                      <i class="material-icons md-14 middle">check</i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <fieldset *ngIf="upload === 'Please wait...'">
+                <label class="input margin-top-20 margin-bottom-5">{{ upload }}</label>
+                <md-progress-bar [mode]="mode"></md-progress-bar>
+              </fieldset>
+              <div class="full margin-top-20">
+                <button (click)="check()" [disabled]="disabled === 'true' || files.length === 0" md-button color="primary" class="primary">Check</button>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </md-card-content>
+    <div class="md-card-footer">
+      <span *ngIf="checkdone !='true'">
+        <button class="primary" md-button md-raised-button color="primary" [disabled]="checkdone !='true'" (click)="save()">Update</button>
+      </span>
+      <span *ngIf="checkdone ==='true'">
+      <span  *ngFor="let file of files" >
+        <button *ngIf="fileName === file.name"  class="primary" md-button md-raised-button color="primary" [disabled]="!form.valid || disabled==='true' || file.type != 'image/png'  || file.size/1024 /1024 >= 5" (click)="save(file.size)">Update</button>
+      </span></span>
+      <div class="action-right">
+        <button [disabled]="disabled==='true'" md-button md-raised-button routerLink="/admin/website/view">View {{getTitle()}}</button>
+      </div>
+    </div>
+  </md-card>
+</div>
+<div class="col-md-2 col-sm-12 col-xs-12"></div>

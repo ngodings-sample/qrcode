@@ -1,0 +1,351 @@
+md-card {
+  select.page {
+    font-size: 12px;
+    width: 50px;
+    margin-right: 40px;
+    margin-bottom: 15px;
+    background: transparent;
+    border-color: transparent;
+    outline: none;
+    @media (max-width: $tablet) {
+      margin-right: 20px;
+    }
+  }
+
+  .search-view-icon {
+    float: left;
+    margin-right: 12px;
+    vertical-align: middle;
+
+    i {
+      margin-top: 2px;
+      @media screen and (max-width: $phone) {
+        float: left;
+        margin-top: 25px;
+      }
+    }
+  }
+
+  .search-view {
+    width: 200px;
+    vertical-align: middle;
+
+    input.input {
+      -webkit-appearance: textfield;
+      -webkit-rtl-ordering: logical;
+      user-select: text;
+      cursor: auto;
+      width: 100%;
+      padding: 5px;
+      font-size: 13px;
+      border-width: 0 !important;
+      border-style: solid !important;
+      border-image: none;
+      text-rendering: auto;
+      color: initial;
+      letter-spacing: normal;
+      word-spacing: normal;
+      text-transform: none;
+      text-indent: 0;
+      text-shadow: none;
+      display: inline-block;
+      text-align: start;
+      margin: 0;
+      -webkit-writing-mode: horizontal-tb;
+    }
+
+    input.input:focus {
+      outline: none;
+      border-bottom: 0;
+    }
+    @media (max-width: $phone) {
+      margin-top: 55px;
+    }
+  }
+}
+
+.md-card-footer-view {
+  padding: 6px 20px 0;
+  font-size: 20px;
+  margin-top: -15px;
+  @media (max-width: $tablet) {
+    text-align: center;
+    padding: 20px 20px 10px;
+  }
+
+  span {
+    font-size: 12px;
+    margin-right: 5px;
+  }
+}
+
+.md-card-footer-viewz {
+  padding: 6px 20px 0;
+  font-size: 20px;
+  margin-top: -15px;
+  @media (max-width: $tablet) {
+    text-align: center;
+    padding: 20px 20px 10px;
+  }
+
+  span {
+    font-size: 12px;
+    margin-right: 5px;
+  }
+}
+
+table.table-view {
+  border-collapse: collapse;
+  width: $full;
+  min-height: 0.01%;
+  overflow-x: auto;
+  @media screen and (max-width: $tablet) {
+    width: 100%;
+    overflow-y: hidden;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+
+  thead {
+    tr {
+      font-size: 12px;
+      vertical-align: bottom;
+
+      a {
+        cursor: pointer;
+        width: 100%;
+
+        td {
+          i {
+            float: right;
+            font-size: 16px;
+            text-align: right;
+            vertical-align: middle;
+          }
+        }
+      }
+
+      td {
+        padding: 10px 20px;
+
+        i {
+          float: right;
+          font-size: 16px;
+          text-align: right;
+          vertical-align: middle;
+        }
+
+        .list-plus {
+          .light-plus-delete {}
+
+          i {
+            margin-right: 5px;
+          }
+        }
+      }
+
+      td.action {
+        width: 245px;
+      }
+    }
+  }
+
+  tbody {
+    td {
+      padding: 10px 20px;
+      font-size: 12px;
+
+      .plus {
+        text-transform: none;
+        font-size: 11px;
+      }
+    }
+
+    td.icon {
+      img {
+        width: 50px;
+      }
+    }
+
+    td.icon2 {
+      img {
+        width: 20px;
+      }
+
+      i {
+        margin-top: 2px;
+        font-size: 13px;
+      }
+    }
+
+    td.action {
+      width: 175px;
+      @media screen and (max-width: $tablet) {
+        width: 175px;
+      }
+    }
+  }
+
+  .md-card-button {
+    i {
+      font-size: 18px;
+    }
+  }
+}
+
+table.table-viewz {
+  border-collapse: collapse;
+  width: $full;
+  min-height: 0.01%;
+  overflow-x: auto;
+  @media screen and (max-width: $tablet) {
+    width: 100%;
+    overflow-y: hidden;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+  }
+
+  thead {
+    tr {
+      font-size: 12px;
+      vertical-align: bottom;
+
+      a {
+        cursor: pointer;
+        width: 100%;
+
+        td {
+          i {
+            float: right;
+            font-size: 16px;
+            text-align: right;
+            vertical-align: middle;
+          }
+        }
+      }
+
+      td.text-right {
+        @media screen and (max-width: $phone) {
+          text-align: center;
+        }
+      }
+
+      td {
+        padding: 10px 20px;
+
+        i {
+          float: right;
+          font-size: 16px;
+          text-align: right;
+          vertical-align: middle;
+        }
+
+        .list-plus {
+          .light-plus-delete {}
+
+          i {
+            margin-right: 5px;
+          }
+        }
+      }
+
+      td.action {
+        width: 245px;
+      }
+    }
+  }
+
+  tbody {
+
+      tr {
+        width: 100%;
+        cursor: pointer;
+        a {
+            width: 100%;display: block;
+      }
+    }
+
+    tr {
+      width: 100%;
+    }
+
+    td {
+      padding: 10px 20px;
+      font-size: 12px;
+
+      .plus {
+        text-transform: none;
+        font-size: 11px;
+      }
+    }
+
+    td.icon {
+      img {
+        width: 50px;
+      }
+    }
+
+    td.icon2 {
+      a {
+        cursor: pointer;
+
+        span {
+          vertical-align: middle;
+          font-size: 14px;
+        }
+
+        span.right {
+          float: right;
+          margin-top: 8px;
+          font-size: 12px;
+        }
+
+        img {
+          width: 30px;
+          height: 30px;
+          margin-right: 10px;
+        }
+
+        i {
+          margin-top: 2px;
+          font-size: 13px;
+        }
+      }
+
+      span {
+        vertical-align: middle;
+        font-size: 14px;
+      }
+
+      img {
+        width: 30px;
+        margin-right: 10px;
+      }
+
+      i {
+        margin-top: 2px;
+        font-size: 13px;
+      }
+    }
+
+    td.action {
+      width: 175px;
+      @media screen and (max-width: $tablet) {
+        width: 175px;
+      }
+    }
+  }
+
+  .md-card-button {
+    i {
+      font-size: 18px;
+    }
+  }
+}
+
+.app-pagination {
+  margin-top: 0;
+}
+
+.app-pagination.center {
+  text-align: center;
+  float: none;
+}

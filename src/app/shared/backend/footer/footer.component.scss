@@ -1,0 +1,23 @@
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/constants';
+
+.footer {
+  margin-top: 80px;
+  font-size: 12px;
+  width: 100%;
+  margin-bottom: 30px;
+  @media (max-width: $small-breakpoint-width) {
+    text-align: $text-center;
+    margin-bottom: 30px;
+  }
+}
+
+.copyright {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+
+  p {
+    margin: 0;
+  }
+}

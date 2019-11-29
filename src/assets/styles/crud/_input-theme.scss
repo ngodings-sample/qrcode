@@ -1,0 +1,160 @@
+@import '../color';
+@import '../constants';
+@mixin input($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .table-create {
+    td {
+      input.input,
+      select.input,
+      textarea.input {
+        border-color: $grey-300 !important;
+        border-top-color: $grey-300 !important;
+        border-right-color: $grey-300 !important;
+        border-bottom-color: $grey-300 !important;
+        border-left-color: $grey-300 !important;
+      }
+
+      input.input:focus,
+      select.input:focus,
+      textarea.input:focus {
+        border-bottom-color: mat-color($primary) !important;
+      }
+
+      input.input:active
+      select.input:active,
+      textarea.input:active {
+        border-bottom-color: $grey-300 !important;
+      }
+
+      label.input {
+        color: $grey-500 !important;
+      }
+
+      input.input.ng-invalid.ng-touched,
+      select.input.ng-invalid.ng-touched,
+      textarea.input.ng-invalid.ng-touched {
+        border-bottom-color: $red-400 !important;
+      }
+
+      select.input.ng-valid.ng-touched,
+      input.input.ng-valid.ng-touched,
+      textarea.input.ng-valid.ng-touche {
+        border-bottom-color: $green-400 !important;
+      }
+
+      select.input.ng-valid.ng-untouched.ng-pristine,
+      input.input.ng-valid.ng-untouched.ng-pristine,
+      textarea.input.ng-valid.ng-untouched.ng-pristine  {
+        border-bottom-color: $grey-300 !important;
+      }
+
+      input.input.ng-pristine,
+      textarea.input.ng-pristine {
+        border-bottom: 1px solid !important;
+        border-bottom-color: $grey-300 !important;
+      }
+    }
+  }
+
+  input.input,
+  select.input,
+  textarea.input {
+    border-color: $grey-300 !important;
+    border-top-color: $grey-300 !important;
+    border-right-color: $grey-300 !important;
+    border-bottom-color: $grey-300 !important;
+    border-left-color: $grey-300 !important;
+  }
+
+  input.input:focus,
+  select.input:focus,
+  textarea.input:focus {
+  border-color:  $grey-300 !important;
+    border-bottom-color: mat-color($primary) !important;
+  }
+
+  input.input:active
+  select.input:active,
+  textarea.input:active {
+  border-color:  $grey-300 !important;
+    border-bottom-color: $grey-300 !important;
+  }
+
+  label.input {
+    color: $grey-500;
+  }
+
+  input.input.ng-invalid.ng-touched,
+  select.input.ng-invalid.ng-touched,
+  textarea.input.ng-invalid.ng-touched {
+  border-color:  $grey-300 !important;
+    border-bottom-color: $red-400 !important;
+  }
+  select.input.ng-valid.ng-untouched,
+  input.input.ng-valid.ng-untouched,
+  textarea.input.ng-valid.ng-untouched {
+  border-color:  $grey-300 !important;
+    border-bottom-color: $green-400 !important;
+  }
+  select.input.ng-valid.ng-untouched.ng-pristine,
+  input.input.ng-valid.ng-untouched.ng-pristine,
+  textarea.input.ng-valid.ng-untouched.ng-pristine {
+  border-color:  $grey-300 !important;
+    border-bottom-color: $green-400 !important;
+  }
+  select.input.ng-invalid.ng-untouched,
+  input.input.ng-invalid.ng-untouched,
+  textarea.input.ng-invalid.ng-untouched {
+  border-color:  $grey-300 !important;
+  }
+  select.input.ng-invalid.ng-untouched.ng-dirty,
+  input.input.ng-invalid.ng-untouched.ng-dirty,
+  textarea.input.ng-invalid.ng-untouched.ng-dirty {
+  border-color:  $grey-300 !important;
+    border-bottom-color: $red-400 !important;
+  }
+  select.input.ng-valid.ng-touched,
+  input.input.ng-valid.ng-touched,
+  textarea.input.ng-valid.ng-touched {
+  border-color:  $grey-300 !important;
+    border-bottom-color: $green-400 !important;
+  }
+  input.input.ng-pristine ,
+  textarea.input.ng-pristine{
+    border-color:  $grey-300 !important;
+  }
+
+  select.page {
+    color: $grey-600 !important;
+  }
+
+  label.file {
+    color: $grey-500 !important;
+  }
+
+  input.file {
+    border-color: $grey-300 !important;
+    border-top-color: $grey-300 !important;
+    border-right-color: $grey-300 !important;
+    border-bottom-color: $grey-300 !important;
+    border-left-color: $grey-300 !important;
+  }
+
+  .file-input::before {
+    color: $white !important;
+    background: mat-color($primary-light) !important;
+  }
+
+  .file-input:hover::before {
+    background: mat-color($primary) !important;
+    transition: background 0.2s ease-in-out !important;
+    -moz-transition: background 0.2s ease-in-out !important;
+    -webkit-transition: background 0.2s ease-in-out !important;
+    -o-transition: background 0.2s ease-in-out !important;
+  }
+}

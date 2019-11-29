@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+<md-sidenav-container>
+  <md-sidenav #sidenav [opened]="!isScreenSmall()" [mode]="isScreenSmall() ? 'over' : 'side'">
+    <app-sidenav></app-sidenav>
+  </md-sidenav>
+  <app-page-header (toggleSidenav)="sidenav.toggle()"></app-page-header>
+  <div class="content">
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="language">
+        <md-select placeholder="{{ language | translate | titlecase }}" class="mt-1" [(ngModel)]="currentLang" #langSelect="ngModel" (ngModelChange)="translate.use(currentLang)">
+          <md-option value="en">English</md-option>
+          <md-option value="id">Indonesia</md-option>
+        </md-select>
+      </div>
+    </div>
+  </div>
+</md-sidenav-container>

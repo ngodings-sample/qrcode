@@ -1,0 +1,122 @@
+@import '../color';
+@import '../constants';
+@mixin create($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .md-card-title {
+    background: $grey-50;
+    color: $grey-600;
+
+    i {
+      color: $grey-800;
+    }
+  }
+
+  .md-card-button {
+    background: mat-color($primary-light);
+
+    .md-button-focus-overlay {
+      background-color: transparent;
+    }
+
+    i {
+      color: $white;
+    }
+  }
+
+  .md-card-button:hover {
+    background: mat-color($primary);
+    transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+  }
+
+  .table-create {
+    background: $white;
+
+    tr {
+      color: #555;
+    }
+
+    td {
+    }
+  }
+
+  .md-card-footer {
+    background: $grey-50;
+
+    button.primary {
+      background-color: mat-color($primary-light);
+      color: $white;
+
+      .md-button-focus-overlay {
+        background-color: transparent;
+      }
+    }
+
+    button.primary:hover {
+      background-color: mat-color($primary);
+      color: $white;
+      transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -webkit-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+    }
+
+    button:hover {
+      .md-button-focus-overlay {
+        transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
+        -o-transition: all 0.4s ease-in-out;
+      }
+    }
+
+    button.primary[disabled] {
+      background: $grey-200;
+      color: $grey-600;
+
+      .md-button-focus-overlay {
+        background-color: transparent;
+      }
+    }
+
+    button.primary[disabled]:hover {
+      background: $grey-200;
+      color: $grey-600;
+
+      .md-button-focus-overlay {
+        transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
+        -o-transition: all 0.4s ease-in-out;
+      }
+    }
+
+    button.reset[disabled] {
+      background: $grey-200 !important;
+      color: $grey-600 !important;
+
+      .md-button-focus-overlay {
+        background-color: transparent;
+      }
+    }
+
+    button.reset[disabled]:hover {
+      background: $grey-200 !important;
+      color: $grey-600 !important;
+
+      .md-button-focus-overlay {
+        transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
+        -o-transition: all 0.4s ease-in-out;
+      }
+    }
+  }
+}

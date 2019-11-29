@@ -1,0 +1,30 @@
+<div class="md-dialog-title">
+  <span>Delete Result</span>
+  <div class="action-dialog-right">
+    <button class="close-dialog" (click)="dialogRef.close();" md-icon-button><i class="material-icons">close</i></button>
+  </div>
+</div>
+<div class="md-dialog-content">
+  <div class="blockquote danger margin-top-3">
+  <table>
+    <tr>
+      <td class="vertical-top"width=50>
+          <i class="material-icons md-24">warning</i>
+      </td>
+      <td>
+        After you delete an Result, it's permanently deleted. Result can't be undeleted.
+      </td>
+    </tr>
+  </table>
+  </div>
+  <div class="title-dialog">
+    Barcode Id
+  </div>
+  <div class="subtitle-dialog">
+    {{ barcodeID | titlecase }}
+  </div>
+</div>
+<div class="md-dialog-action">
+  <button (click)="dialogRef.close();" md-button class="default">Cancel</button>
+  <button (click)="dialogRef.close();delete(barcodeKey,barcodeID);" md-button class="warn">Delete</button>
+</div>

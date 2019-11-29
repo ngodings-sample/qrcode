@@ -1,0 +1,53 @@
+<div class="col-md-2 col-sm-12 col-xs-12"></div>
+<div class="col-md-8 col-sm-12 col-xs-12 margin-top-20">
+  <md-card>
+    <div class="md-card-title">
+      {{ Action }} {{ getTitle() }}
+      <button md-icon-button class="md-card-button"><i class="material-icons">{{ Icon }}</i></button>
+    </div>
+    <md-card-content>
+      <form [formGroup]="form" autocomplete="off" novalidate>
+        <table class="table-create margin-top-30">
+          <tr>
+            <td>
+              <fieldset>
+                <label class="input">Menu Name</label>
+                <input class="input" type="text" formControlName="menu_name" [maxlength]="20">
+                <div class="information-error" contextmenu="" *ngIf="form.get('menu_name').hasError('required') && form.get('menu_name').touched">
+                  Menu name is required
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+                <div class="information-error" contextmenu="" *ngIf="form.get('menu_name').hasError('minlength')">
+                  Minimum of 4 characters
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+                <div class="information-error" contextmenu="" *ngIf="form.get('menu_name').hasError('maxlength')">
+                  Maximum of 20 characters
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset *ngIf="upload === 'Please wait...'">
+                <label class="input margin-top-20 margin-bottom-5">{{ upload }}</label>
+                <md-progress-bar [mode]="mode"></md-progress-bar>
+              </fieldset>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </md-card-content>
+    <div class="md-card-footer">
+      <button class="primary" md-button md-raised-button color="primary" [disabled]="!form.valid || disabled==='true'" (click)="save()">Update</button>
+      <button [disabled]="disabled==='true'" md-button md-raised-button class="reset" color="default" (click)="reset()">Reset</button>
+      <div class="action-right">
+        <button [disabled]="disabled==='true'" md-button md-raised-button routerLink="/admin/menu/view">View {{getTitle()}}</button>
+      </div>
+    </div>
+  </md-card>
+</div>
+<div class="col-md-2 col-sm-12 col-xs-12"></div>

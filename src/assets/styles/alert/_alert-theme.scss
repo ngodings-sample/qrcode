@@ -1,0 +1,26 @@
+@import '../color';
+@import '../constants';
+
+@mixin alert($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .information-error {
+    color: $red-400;
+  }
+
+  .information-warning {
+    color: $amber-400;
+  }
+
+  .information-success {
+    color: $green-400;
+  }
+
+  .information-info {
+    color: $cyan-400;
+  }
+}

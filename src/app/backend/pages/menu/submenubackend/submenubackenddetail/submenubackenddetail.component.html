@@ -1,0 +1,54 @@
+<div class="col-md-2 col-sm-12 col-xs-12"></div>
+<div class="col-md-8 col-sm-12 col-xs-12 margin-top-20">
+  <md-card>
+    <div class="md-card-title">
+      {{ Action }} {{ getTitle() }}
+      <button md-icon-button class="md-card-button"><i class="material-icons">{{ Icon }}</i></button>
+    </div>
+    <md-card-content>
+      <div class="table-responsive" *ngIf="submenubackends | async; let submenubackend; else loading">
+        <table class="table-detail" *ngFor="let submenubackend of (submenubackends | async)">
+          <tr>
+            <td class="primary" width="150">Name</td>
+            <td width="50">:</td>
+            <td>{{ submenubackend.submenu_name | titlecase }}</td>
+          </tr>
+          <tr>
+            <td class="primary" width="150">Icon</td>
+            <td width="50">:</td>
+            <td><i class="material-icons">{{ submenubackend.submenu_icon }}</i></td>
+          </tr>
+          <tr>
+            <td class="primary" width="150">Url</td>
+            <td width="50">:</td>
+            <td>{{ submenubackend.submenu_url }}</td>
+          </tr>
+          <tr>
+            <td class="primary" width="150">Created</td>
+            <td width="50">:</td>
+            <td>{{ submenubackend.submenu_created | date }}, {{ submenubackend.submenu_created | date:'hh:mm:ss a'}}</td>
+          </tr>
+          <tr>
+            <td class="primary" width="150">Last Modified</td>
+            <td width="50">:</td>
+            <td>{{ submenubackend.submenu_updated | date }}, {{ submenubackend.submenu_updated | date:'hh:mm:ss a'}}</td>
+          </tr>
+        </table>
+      </div>
+      <ng-template #loading>
+        <table class="table-detail">
+          <tr>
+            <td class="text-center" colspan="2">Loading Data...</td>
+          </tr>
+        </table>
+      </ng-template>
+    </md-card-content>
+    <div class="md-card-footer-detail" *ngFor="let submenubackend of (submenubackends | async)">
+      <button class="primary" md-button md-raised-button color="primary" routerLink="/admin/submenu/update/{{ submenubackend.submenu_name }}">Edit</button>
+      <div class="action-right">
+        <button md-button md-raised-button routerLink="/admin/submenu/view">View {{getTitle()}}</button>
+      </div>
+    </div>
+  </md-card>
+</div>
+<div class="col-md-2 col-sm-12 col-xs-12"></div>

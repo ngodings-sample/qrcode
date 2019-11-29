@@ -1,0 +1,106 @@
+<div class="col-md-2 col-sm-12 col-xs-12"></div>
+<div class="col-md-8 col-sm-12 col-xs-12 margin-top-20">
+  <md-card>
+    <div class="md-card-title">
+      {{ Action }} {{ getTitle() }}
+      <button md-icon-button class="md-card-button"><i class="material-icons">{{ Icon }}</i></button>
+    </div>
+    <md-card-content>
+      <form [formGroup]="form" autocomplete="off" novalidate>
+        <table class="table-create margin-top-30" *ngIf="users | async; let user; else loading">
+          <tr>
+            <td>
+              <fieldset>
+                <label class="input">Name</label>
+                <input class="input" type="text" formControlName="displayName" name="displayName" [maxlength]="50">
+                <div class="information-error" contextmenu="" *ngIf="form.get('displayName').hasError('required') && form.get('displayName').touched">
+                  Name is required
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+                <div class="information-error" contextmenu="" *ngIf="form.get('displayName').hasError('minlength')">
+                  Minimum of 4 characters
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+                <div class="information-error" contextmenu="" *ngIf="form.get('displayName').hasError('maxlength')">
+                  Maximum of 50 characters
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset class="margin-top-20">
+                <label class="input">No Telp</label>
+                <input class="input" type="text" formControlName="no_telp" name="no_telp" [maxlength]="12">
+                <div class="information-error" contextmenu="" *ngIf="form.get('no_telp').hasError('required') && form.get('no_telp').touched">
+                  No Telp is required
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+                <div class="information-error" contextmenu="" *ngIf="form.get('no_telp').hasError('minlength')">
+                  Minimum of 12 characters
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+                <div class="information-error" contextmenu="" *ngIf="form.get('no_telp').hasError('maxlength')">
+                  Maximum of 12 characters
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset class="margin-top-20">
+                <label class="input">Address</label>
+                <textarea type="text" class="input" mdInput formControlName="address" name="address" [maxlength]="500"></textarea>
+                <div class="information-error" contextmenu="" *ngIf="form.get('address').hasError('required') && form.get('address').touched">
+                  Address is required
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+                <div class="information-error" contextmenu="" *ngIf="form.get('address').hasError('minlength')">
+                  Minimum of 4 characters
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+                <div class="information-error" contextmenu="" *ngIf="form.get('address').hasError('maxlength')">
+                  Maximum of 500 characters
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset *ngIf="upload === 'Please wait...'">
+                <label class="input margin-top-20 margin-bottom-5">{{ upload }}</label>
+                <md-progress-bar [mode]="mode"></md-progress-bar>
+              </fieldset>
+            </td>
+          </tr>
+        </table>
+        <ng-template #loading>
+          <table class="table-create margin-top-30">
+            <tr>
+              <td class="text-center">
+                Loading Data...
+              </td>
+            </tr>
+          </table>
+        </ng-template>
+      </form>
+    </md-card-content>
+    <div class="md-card-footer">
+      <button class="primary" md-button md-raised-button color="primary" [disabled]="!form.valid || disabled==='true'" (click)="save()">Update</button>
+      <button [disabled]="disabled==='true'" md-button md-raised-button color="default" class="reset" (click)="reset()">Reset</button>
+      <div class="action-right">
+        <button [disabled]="disabled==='true'" md-button md-raised-button routerLink="/admin/myaccount/view">View {{getTitle()}}</button>
+      </div>
+    </div>
+  </md-card>
+</div>
+<div class="col-md-2 col-sm-12 col-xs-12"></div>

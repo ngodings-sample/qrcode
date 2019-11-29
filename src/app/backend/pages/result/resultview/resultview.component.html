@@ -1,0 +1,67 @@
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <simple-notifications [options]="options"></simple-notifications>
+  <md-card>
+    <md-card-content>
+      <div class="action-top">
+        <div class="search-view-icon"> <i class="material-icons md-24 middle">search</i></div>
+        <fieldset class="search-view">
+          <input type="text" class="input" placeholder="Search by Name" [(ngModel)]="filter">
+        </fieldset>
+      </div>
+      <div class="table-responsive">
+        <table class="table-view">
+          <thead>
+            <tr>
+              <td width=160>Barcode Id</td>
+              <td width=160>Created</td>
+              <td class="text-center action">Action</td>
+            </tr>
+          </thead>
+          <tbody *ngIf="results | async; let result; else loading">
+            <tr *ngFor="let result of (results | async) | ResultFilter: filter | paginate: config">
+              <td>{{ result.barcode_id }}</td>
+              <td>{{ result.result_created | date }}, {{ result.result_created | date:'hh:mm:ss a'}}</td>
+              <td class="text-center action">
+                <button mdTooltip="Detail {{ result.barcode_id }}" [mdTooltipPosition]="positionBelow" md-icon-button class="md-card-button" routerLink="/admin/result/detail/{{ result.barcode_id }}"><i class="material-icons">zoom_in</i></button>
+                <button (click)="deleteDialog(result.$key, result.barcode_id)" mdTooltip="Delete {{ result.barcode_id }}" [mdTooltipPosition]="positionBelow" md-icon-button class="md-card-button"><i class="material-icons">delete</i></button>
+              </td>
+            </tr>
+          </tbody>
+          <ng-template #loading>
+            <tbody>
+              <tr>
+                <td class="text-center" colspan="5">
+                  Loading Data...
+                </td>
+              </tr>
+            </tbody>
+          </ng-template>
+          <tbody *ngIf="((results | async) | ResultFilter: filter)?.length===0 && (results | async)?.length > 0">
+            <tr>
+              <td class="text-center" colspan="5">
+                Search data not found
+              </td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr *ngIf="(results | async)?.length === 0">
+              <td class="text-center" colspan="5">Data is still empty</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </md-card-content>
+    <div class="md-card-footer-view">
+      <pagination-controls class="app-pagination" [id]="config.id" [previousLabel]="labels.previousLabel" [nextLabel]="labels.nextLabel" (pageChange)="onPageChange($event)"></pagination-controls>
+      <span> Rows per pages : </span>
+      <select [(ngModel)]="config.itemsPerPage" class="page">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+      <span>{{ (results | async)?.length }} Total rows</span>
+    </div>
+  </md-card>
+</div>

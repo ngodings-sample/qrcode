@@ -1,0 +1,45 @@
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/constants';
+
+.page-header-body {
+  padding-left: 10px;
+}
+
+.page-title {
+  padding: 18px 10px;
+  @media (max-width: $small-breakpoint-width) {
+    padding: 10px 0 18px 10px;
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    @media (max-width: $small-breakpoint-width) {
+      margin-top: -36px;
+      margin-left: 55px;
+    }
+  }
+}
+
+.sidenav-toggle {
+  padding: 0;
+  margin: 18px 8px 8px 18px;
+  min-width: 48px;
+  display: none;
+  @media (max-width: $small-breakpoint-width) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  md-icon {
+    font-size: 24px;
+    height: 48px;
+    width: 48px;
+    line-height: 48px;
+  }
+}

@@ -1,0 +1,47 @@
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/constants';
+
+.dividerhome {
+  height: 30px;
+}
+
+md-card {
+  md-card-title {
+    font-size: 16px;
+  }
+
+  p {
+    font-size: 12px !important;
+    min-height: 50px;
+  }
+
+  .icon {
+    text-align: $text-center;
+
+    i {
+      font-size: 75px;
+    }
+  }
+}
+
+.blockquote {
+  i {
+    font-size: 12px;
+    vertical-align: middle;
+  }
+}
+
+.col-tablet {
+  @media (max-width: $tablet) {
+    margin-top: 30px;
+  }
+}
+
+.col-phone {
+  @media (max-width: $phone) {
+    margin-top: 30px;
+  }
+  @media (max-width: $small-phone) {
+    margin-top: 30px;
+  }
+}

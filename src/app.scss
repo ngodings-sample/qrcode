@@ -1,0 +1,470 @@
+@import '~@angular/material/theming';
+@import './assets/styles/variables';
+@import './assets/styles/constants';
+@import './app-theme';
+@import './assets/styles/alert/alert';
+@import './assets/styles/blockquote/blockquote';
+@include mat-core();
+$primary: mat-palette($mat-light-blue, 700);
+$primary-light: mat-palette($mat-light-blue, 600);
+$accent: mat-palette($mat-amber, A200, A100, A400);
+$theme: mat-light-theme($primary, $accent, $primary-light);
+@include angular-material-theme($theme);
+@include app($theme);
+
+.col-md-12.page-header-body {
+  padding-left: 10px !important;
+}
+
+.mat-tab-body-content {
+  padding: 30px !important;
+}
+
+.pace {
+  z-index: -1000;
+}
+
+.loading-splash::after,
+.loading-splash::before {
+  position: fixed;
+  z-index: 3000;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.loading-splash::before {
+  content: '';
+  background-color: #fff;
+}
+
+.loading-splash::after {
+  font-family: 'Alegreya Sans';
+  content: url('/assets/images/favicon/logo_150x150.png');
+  text-align: center;
+  white-space: pre;
+  font-weight: normal;
+  font-size: 40px;
+  letter-spacing: 0.04rem;
+  color: $orange-600;
+  opacity: 1;
+  animation: animation 1s alternate infinite;
+}
+
+.pace .pace-activity {
+  top: 75px;
+  right: 40px;
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}
+
+.pace .pace-progress-inner {
+  box-shadow: none;
+}
+@keyframes animation {
+  to {
+    opacity: 0.4;
+  }
+}
+
+body,
+html {
+  font-family: 'Roboto', sans-serif;
+  background-color: $grey-50;
+  margin: 0;
+  min-height: 100%;
+  height: 100%;
+}
+
+app-layout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+[md-button],
+[md-raised-button] {
+  text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.middle {
+  vertical-align: middle;
+}
+
+.vertical-top {
+  vertical-align: top;
+}
+
+.material-icons.md-10 {
+  font-size: 10px;
+}
+
+.material-icons.md-14 {
+  font-size: 14px;
+}
+
+.material-icons.md-18 {
+  font-size: 18px;
+}
+
+.material-icons.md-24 {
+  font-size: 24px;
+}
+
+.material-icons.md-36 {
+  font-size: 36px;
+}
+
+.material-icons.md-48 {
+  font-size: 48px;
+}
+
+.vid {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
+.vid embed,
+.vid iframe,
+.vid object {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+// ***** MARGIN ***** //
+
+.margin-top-2 {
+  margin-top: 2px;
+}
+
+.margin-top-5 {
+  margin-top: 5px;
+}
+
+.margin-top-10 {
+  margin-top: 10px;
+}
+
+.margin-top-15 {
+  margin-top: 15px;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.margin-top-25 {
+  margin-top: 25px;
+}
+
+.margin-top-30 {
+  margin-top: 30px;
+}
+
+.margin-top-35 {
+  margin-top: 35px;
+}
+
+.margin-top-40 {
+  margin-top: 40px;
+}
+
+.margin-top-50 {
+  margin-top: 50px;
+}
+
+.margin-top-3 {
+  margin-top: 3px;
+}
+
+.margin-bottom-5 {
+  margin-bottom: 5px;
+}
+
+.margin-bottom-10 {
+  margin-bottom: 10px;
+}
+
+.margin-bottom-15 {
+  margin-bottom: 15px;
+}
+
+.margin-bottom-20 {
+  margin-bottom: 20px;
+}
+
+.margin-bottom-25 {
+  margin-bottom: 25px;
+}
+
+.margin-bottom-30 {
+  margin-bottom: 30px;
+}
+
+.-margin-bottom-30 {
+  margin-bottom: -30px;
+}
+
+.margin-bottom-35 {
+  margin-bottom: 35px;
+}
+
+.margin-bottom-40 {
+  margin-bottom: 40px;
+}
+
+.margin-bottom-50 {
+  margin-bottom: 50px;
+}
+
+.margin-left-5 {
+  margin-left: 5px;
+}
+
+.margin-left-10 {
+  margin-left: 10px;
+}
+
+.margin-left-15 {
+  margin-left: 15px;
+}
+
+.margin-left-20 {
+  margin-left: 20px;
+}
+
+.margin-left-25 {
+  margin-left: 25px;
+}
+
+.margin-left-30 {
+  margin-left: 30px;
+}
+
+.margin-left-35 {
+  margin-left: 35px;
+}
+
+.margin-left-40 {
+  margin-left: 40px;
+}
+
+.margin-left-50 {
+  margin-left: 50px;
+}
+
+.margin-right-5 {
+  margin-right: 5px;
+}
+
+.margin-right-10 {
+  margin-right: 10px;
+}
+
+.margin-right-15 {
+  margin-right: 15px;
+}
+
+.margin-right-20 {
+  margin-right: 20px;
+}
+
+.margin-right-25 {
+  margin-right: 25px;
+}
+
+.margin-right-30 {
+  margin-right: 30px;
+}
+
+.margin-right-35 {
+  margin-right: 35px;
+}
+
+.margin-right-40 {
+  margin-right: 40px;
+}
+
+.marginrightp-50 {
+  margin-right: 50px;
+}
+// ***** PADDING ***** //
+
+.padding-top-3 {
+  padding-top: 3px;
+}
+
+.padding-top-5 {
+  padding-top: 5px;
+}
+
+.padding-top-10 {
+  padding-top: 10px;
+}
+
+.padding-top-15 {
+  padding-top: 15px;
+}
+
+.padding-top-20 {
+  padding-top: 20px;
+}
+
+.padding-top-25 {
+  padding-top: 25px;
+}
+
+.padding-top-30 {
+  padding-top: 30px;
+}
+
+.padding-top-35 {
+  padding-top: 35px;
+}
+
+.padding-top-40 {
+  padding-top: 40px;
+}
+
+.padding-top-50 {
+  padding-top: 50px;
+}
+
+.padding-bottom-5 {
+  padding-bottom: 5px;
+}
+
+.padding-bottom-10 {
+  padding-bottom: 10px;
+}
+
+.padding-bottom-15 {
+  padding-bottom: 15px;
+}
+
+.padding-bottom-20 {
+  padding-bottom: 20px;
+}
+
+.padding-bottom-25 {
+  padding-bottom: 25px;
+}
+
+.padding-bottom-30 {
+  padding-bottom: 30px;
+}
+
+.padding-bottom-35 {
+  padding-bottom: 35px;
+}
+
+.padding-bottom-40 {
+  padding-bottom: 40px;
+}
+
+.padding-bottom-50 {
+  padding-bottom: 50px;
+}
+
+.m-margin-top-20 {
+  @media (max-width: $tablet) {
+    margin-top: 20px;
+  }
+}
+
+.col-md-4.padding-left-none {
+  padding-left: 0;
+  @media (max-width: $tablet) {
+    padding-right: 0;
+  }
+}
+
+.col-md-4.padding-right-none {
+  padding-right: 0;
+  @media (max-width: $tablet) {
+    padding-left: 0;
+  }
+}
+
+.col-md-6.padding-left-none {
+  padding-left: 0;
+  @media (max-width: $tablet) {
+    padding-right: 0;
+  }
+}
+
+.col-md-6.padding-right-none {
+  padding-right: 0;
+  @media (max-width: $tablet) {
+    padding-left: 0;
+  }
+}
+
+.col-md-4.padding-left-none {
+  padding-left: 0;
+  @media (max-width: $tablet) {
+    padding-right: 0;
+  }
+}
+
+.col-md-3.padding-left-none {
+  padding-left: 0;
+  @media (max-width: $tablet) {
+    padding-right: 0;
+  }
+}
+
+.col-md-8.padding-right-none {
+  padding-right: 0;
+  @media (max-width: $tablet) {
+    padding-left: 0;
+  }
+}
+
+.col-md-12.padding-none {
+  padding: 0;
+}

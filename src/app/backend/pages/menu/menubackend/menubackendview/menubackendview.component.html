@@ -1,0 +1,83 @@
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <simple-notifications [options]="options"></simple-notifications>
+  <md-card>
+    <md-card-content>
+      <div class="action-top">
+        <button md-button md-raised-button routerLink="/admin/menu/create">Add {{getTitle()}}</button>
+        <div class="search-view-icon"> <i class="material-icons md-24 middle">search</i></div>
+        <fieldset class="search-view">
+          <input type="text" class="input" placeholder="Search by Menu Name" [(ngModel)]="filter">
+        </fieldset>
+      </div>
+      <div class="table-responsive">
+        <table class="table-view">
+          <thead>
+            <tr>
+              <td>Name</td>
+              <td>Submenu</td>
+              <td width=100></td>
+              <td width=200>Last Modified</td>
+              <td class="text-center action">Action</td>
+            </tr>
+          </thead>
+          <tbody *ngIf="menubackends | async; let menubackend; else loading">
+            <tr *ngFor="let menubackend of (menubackends | async) | MenuBackendFilter: filter | paginate: config">
+              <td>{{ menubackend.menu_name | titlecase }}</td>
+              <td>
+                <div class="list-plus" *ngFor="let submenubackend of menubackend.Data">
+                  <i class="material-icons md-14 middle">check</i> {{ (submenubackend | async)?.submenu_name | titlecase }}
+                  <span class="light-plus-delete">
+                    <button md-icon-button mdTooltip="Delete {{ (submenubackend | async)?.submenu_name | titlecase }}" [mdTooltipPosition]="positionRight" class="md-card-button" (click)="deleteSubMenuBackendDialog(menubackend.$key, submenubackend)"><i class="material-icons">delete</i></button>
+                  </span>
+                </div>
+                <div class="list-plus" *ngIf="menubackend.Data?.length === 0">
+                  <span>Data is still empty</span>
+                </div>
+              </td>
+              <td><button [disabled]="(menubackends | async)?.length === 0" class="plus" md-button md-raised-button (click)="createDialog(menubackend.$key, menubackend.menu_name)">Add Submenu</button></td>
+              <td>{{ menubackend.menu_updated | date }}, {{ menubackend.menu_updated | date:'hh:mm:ss a'}}</td>
+              <td class="text-center action">
+                <button md-icon-button mdTooltip="Edit {{ menubackend.menu_name }}" [mdTooltipPosition]="positionBelow" class="md-card-button" routerLink="/admin/menu/update/{{ menubackend.menu_name }}"><i class="material-icons">mode_edit</i></button>
+                <button md-icon-button mdTooltip="Detail {{ menubackend.menu_name }}" [mdTooltipPosition]="positionBelow" class="md-card-button" routerLink="/admin/menu/detail/{{ menubackend.menu_name }}"><i class="material-icons">zoom_in</i></button>
+                <button [disabled]="menubackend.Data?.length != 0" md-icon-button mdTooltip="Delete {{ menubackend.menu_name }}" [mdTooltipPosition]="positionBelow" class="md-card-button" (click)="deleteDialog(menubackend.$key, menubackend.menu_name)"><i class="material-icons">delete</i></button>
+              </td>
+            </tr>
+          </tbody>
+          <tbody *ngIf="((menubackends | async) | MenuBackendFilter: filter)?.length===0 && (menubackends | async)?.length > 0">
+            <tr>
+              <td class="text-center" colspan="5">
+                Search data not found
+              </td>
+            </tr>
+          </tbody>
+          <ng-template #loading>
+            <tbody>
+              <tr>
+                <td class="text-center" colspan="5">
+                  Loading Data...
+                </td>
+              </tr>
+            </tbody>
+          </ng-template>
+          <tbody>
+            <tr *ngIf="(menubackends | async)?.length === 0">
+              <td colspan="5" class="text-center">Data is still empty</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </md-card-content>
+    <div class="md-card-footer-view">
+      <pagination-controls class="app-pagination" [id]="config.id" [previousLabel]="labels.previousLabel" [nextLabel]="labels.nextLabel" (pageChange)="onPageChange($event)"></pagination-controls>
+      <span> Rows per pages : </span>
+      <select [(ngModel)]="config.itemsPerPage" class="page">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+      <span>{{ (menubackends | async)?.length }} Total rows</span>
+    </div>
+  </md-card>
+</div>

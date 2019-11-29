@@ -1,0 +1,28 @@
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/constants';
+@import '../../../../assets/styles/crud/input';
+
+h1 {
+  font-size: 150px;
+}
+
+.blockquote {
+  font-size: 20px;
+}
+
+.logo {
+  text-align: center;
+
+  img {
+    width: 60%;
+  }
+}
+
+.not-found {
+  margin-top: 80px;
+}
+
+.button-found {
+  margin-top: 100px;
+  text-align: center;
+}

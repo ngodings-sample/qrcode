@@ -1,0 +1,137 @@
+<simple-notifications [options]="options"></simple-notifications>
+<div class="col-md-12 col-sm-12 col-xs-12" *ngFor="let user of (users|async)">
+
+  <div class="col-md-4 myaccount">
+    <md-card>
+      <md-card-content>
+        <div class="title text-center">
+          Photo Profile
+        </div>
+        <img [src]="user.photoURL" />
+      </md-card-content>
+    </md-card>
+
+
+  </div>
+  <div class="col-md-8">
+    <md-card>
+      <div class="md-card-title">
+        My Account
+      </div>
+      <md-card-content>
+        <table class="table-detail">
+          <tr>
+            <td class="primary" width="150">Email</td>
+            <td width="50">:</td>
+            <td>{{ user.email }}</td>
+          </tr>
+          <tr>
+            <td class="primary" width="150">Name</td>
+            <td width="50">:</td>
+            <td>{{ user.displayName }}</td>
+          </tr>
+          <tr *ngIf="user.address != 'empty'">
+            <td class="primary" width="150">Address</td>
+            <td width="50">:</td>
+            <td>{{ user.address }}</td>
+          </tr>
+          <tr *ngIf="user.no_telp != 'empty'">
+            <td class="primary" width="150">No Telp</td>
+            <td width="50">:</td>
+            <td>{{ user.no_telp }}</td>
+          </tr>
+          <tr>
+            <td class="primary" width="150">Role</td>
+            <td width="50">:</td>
+            <td>{{ user.role }}</td>
+          </tr>
+          <tr>
+            <td class="primary" width="150">Price</td>
+            <td width="50">:</td>
+            <td>{{ user.price | titlecase }}</td>
+          </tr>
+          <tr>
+            <td class="primary" width="150">Created</td>
+            <td width="50">:</td>
+            <td>{{ user.created | date }}, {{ user.created | date:'hh:mm:ss a'}}</td>
+          </tr>
+          <tr>
+            <td class="primary" width="150">Last Modified</td>
+            <td width="50">:</td>
+            <td>{{ user.updated | date }}, {{ user.updated | date:'hh:mm:ss a'}}</td>
+          </tr>
+        </table>
+      </md-card-content>
+      <div class="md-card-footer-detail">
+        <button class="primary" md-button md-raised-button color="primary" routerLink="/admin/myaccount/update/{{ user.email }}">Edit</button>
+
+        <button class="primary" md-button md-raised-button (click)="resetPassword(user.email);" color="primary">Reset Password</button>
+      </div>
+    </md-card>
+
+    <md-card *ngIf="user.address === 'empty'">
+      <md-card-content>
+        <form [formGroup]="form" autocomplete="off" novalidate>
+          <table class="table-create margin-top-20">
+
+            <div class="title red text-center margin-top-30">
+              Lengkapi Biodata *
+            </div>
+            <tr>
+              <td>
+                <fieldset>
+                  <label class="input">No Telp</label>
+                  <input class="input" type="text" formControlName="no_telp" name="no_telp" [maxlength]="12">
+                  <div class="information-error" contextmenu="" *ngIf="form.get('no_telp').hasError('required') && form.get('no_telp').touched">
+                    No Telp is required
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('no_telp').hasError('minlength')">
+                    Minimum of 12 characters
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('no_telp').hasError('maxlength')">
+                    Maximum of 12 characters
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                </fieldset>
+                <fieldset class="margin-top-20">
+                  <label class="input">Address</label>
+                  <textarea type="text" class="input" mdInput formControlName="address" name="address" [maxlength]="500"></textarea>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('address').hasError('required') && form.get('address').touched">
+                    Address is required
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('address').hasError('minlength')">
+                    Minimum of 4 characters
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('address').hasError('maxlength')">
+                    Maximum of 500 characters
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                </fieldset>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </md-card-content>
+      <div class="md-card-footer">
+        <button class="primary" md-button md-raised-button color="primary" [disabled]="!form.valid || disabled==='true'" (click)="save()">Input</button>
+        <button [disabled]="disabled==='true'" md-button md-raised-button class="reset" color="default" (click)="reset()">Reset</button>
+      </div>
+    </md-card>
+  </div>
+</div>

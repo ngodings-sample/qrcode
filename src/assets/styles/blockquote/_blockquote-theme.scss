@@ -1,0 +1,53 @@
+@import '../color';
+@import '../constants';
+
+@mixin blockquote($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .blockquote.primary {
+    background: mat-color($primary, 50);
+    color: mat-color($primary, 600);
+    border-color: mat-color($primary, 600);
+  }
+
+  .blockquote.success {
+    background: $green-50;
+    color: $green-600;
+    border-color: $green-600;
+  }
+
+  .blockquote.warning {
+    background: $amber-50;
+    color: $amber-600;
+    border-color: $amber-600;
+  }
+
+  .blockquote.danger {
+    background: $red-50;
+    color: $red-600;
+    border-color: $red-600;
+  }
+
+
+  .blockquote.danger {
+    table {
+      tr {
+        td {
+          background: $red-50 !important;
+          color: $red-600 !important;
+          border-color: $red-600 !important;
+        }
+      }
+    }
+  }
+  
+  .blockquote.info {
+    background: $cyan-50;
+    color: $cyan-600;
+    border-color: $cyan-600;
+  }
+}

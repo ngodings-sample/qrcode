@@ -1,0 +1,106 @@
+<div class="col-md-12 col-sm-12 col-xs-12 margin-bottom-30">
+  <div *ngIf="(websites | async)?.length > 0; else empty">
+    <div class="blockquote primary" *ngFor="let website of (websites | async)">
+      Welcome to website administrator {{ website.website_name | titlecase }}, This page is for managing the website
+    </div>
+  </div>
+  <ng-template #empty>
+    <div class="blockquote primary">
+      Welcome to website administrator MyWebsite, This page is for managing the website
+    </div>
+  </ng-template>
+</div>
+<div class="col-md-3 col-sm-6 col-xs-12">
+  <a routerLink="/admin/menu">
+    <md-card class="primary">
+      <md-card-title>Menu Backend</md-card-title>
+      <p>Manage your menu backend</p>
+      <div class="icon">
+        <i class="material-icons">menu</i>
+      </div>
+    </md-card>
+  </a>
+</div>
+<div class="col-md-3 col-sm-6 col-xs-12 col-phone">
+  <a routerLink="/admin/submenu">
+    <md-card class="yellow">
+      <md-card-title>Submenu Backend</md-card-title>
+      <p>Manage your submenu backend</p>
+      <div class="icon">
+        <i class="material-icons">subject</i>
+      </div>
+    </md-card>
+  </a>
+</div>
+<div class="col-md-3 col-sm-6 col-xs-12 col-phone col-tablet">
+  <a routerLink="/admin/menufrontend">
+    <md-card class="primary">
+      <md-card-title>Menu Frontend</md-card-title>
+      <p>Manage your menu frontend</p>
+      <div class="icon">
+        <i class="material-icons">menu</i>
+      </div>
+    </md-card>
+  </a>
+</div>
+<div class="col-md-3 col-sm-6 col-xs-12 col-phone col-tablet">
+  <a routerLink="/admin/website">
+    <md-card class="yellow">
+      <md-card-title>Website Information</md-card-title>
+      <p>Manage your website</p>
+      <div class="icon">
+        <i class="material-icons">laptop</i>
+      </div>
+    </md-card>
+  </a>
+</div>
+<div class="col-md-12 col-sm-12 col-xs-12 margin-top-15 margin-bottom-10"></div>
+<div class="col-md-3 col-sm-6 col-xs-12 col-phone col-tablet">
+  <a routerLink="/admin/course">
+    <md-card class="red">
+      <md-card-title>Courses</md-card-title>
+      <p>Manage your courses</p>
+      <div class="icon">
+        <i class="material-icons">video_library</i>
+      </div>
+    </md-card>
+  </a>
+</div>
+<div class="col-md-3 col-sm-6 col-xs-12 col-phone col-tablet">
+  <a routerLink="/admin/lesson">
+    <md-card class="red">
+      <md-card-title>Lesson</md-card-title>
+      <p>Manage your lesson</p>
+      <div class="icon">
+        <i class="material-icons">videocam</i>
+      </div>
+    </md-card>
+  </a>
+</div>
+<div class="col-md-3 col-sm-6 col-xs-12 col-phone col-tablet">
+  <a routerLink="/admin/websiteservice">
+    <md-card class="red">
+      <md-card-title>Website Service</md-card-title>
+      <p>Manage your website service</p>
+      <div class="icon">
+        <i class="material-icons">web</i>
+      </div>
+    </md-card>
+  </a>
+</div>
+<div class="col-md-3 col-sm-6 col-xs-12 col-phone col-tablet">
+  <a routerLink="/admin/pricing">
+    <md-card class="yellow">
+      <md-card-title>Pricing</md-card-title>
+      <p>Manage your pricing</p>
+      <div class="icon">
+        <i class="material-icons">attach_money</i>
+      </div>
+    </md-card>
+  </a>
+</div>
+<div class="col-md-12 col-sm-12 col-xs-12 margin-top-30">
+  <div class="blockquote no-border info date">
+    Current time : {{date | date: 'hh:mm:ss a'}} <i class="material-icons">timer</i>
+  </div>
+</div>

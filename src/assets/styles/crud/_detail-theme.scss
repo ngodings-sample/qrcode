@@ -1,0 +1,83 @@
+@import '../color';
+@import '../constants';
+
+@mixin detail($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .table-detail {
+    background: $white;
+
+    tr {
+      color: #555;
+      border-bottom: 1px solid #DADADA;
+    }
+
+    tr:hover {
+      background: $grey-50;
+    }
+
+    td.primary {
+      color: mat-color($primary);
+    }
+
+    tr:first-child {
+      border-top: 1px solid #DADADA;
+    }
+  }
+
+  .md-card-footer-detail {
+    background: $grey-50;
+
+    button.primary {
+      background-color: mat-color($primary-light);
+      color: $white;
+
+      .md-button-focus-overlay {
+        background-color: transparent;
+      }
+    }
+
+    button.primary:hover {
+      background-color: mat-color($primary);
+      color: $white;
+      transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -webkit-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+    }
+
+    button:hover {
+      .md-button-focus-overlay {
+        transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
+        -o-transition: all 0.4s ease-in-out;
+      }
+    }
+
+    button.primary[disabled] {
+      background: $grey-200;
+      color: $grey-600;
+
+      .md-button-focus-overlay {
+        background-color: transparent;
+      }
+    }
+
+    button.primary[disabled]:hover {
+      background: $grey-200;
+      color: $grey-600;
+
+      .md-button-focus-overlay {
+        transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
+        -o-transition: all 0.4s ease-in-out;
+      }
+    }
+  }
+}

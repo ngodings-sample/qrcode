@@ -1,0 +1,114 @@
+@import '../../assets/styles/color';
+@import '../../assets/styles/constants';
+@mixin backend($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .app-pagination {
+    float: right;
+    margin-top: 4px;
+    @media (max-width: $tablet) {
+      float: none;
+    }
+
+    .ngx-pagination {
+      color: $grey-300;
+      padding: 0;
+      margin: 0;
+      width: auto;
+      height: auto;
+      border-radius: 4px;
+      @media (max-width: $tablet) {
+        margin-bottom: 10px;
+      }
+
+      li {
+        a {
+          background: $white;
+          padding: 3px 13px;
+          color: $grey-600;
+          line-height: 24px;
+          cursor: pointer;
+
+          span {
+            color: $grey-600;
+            margin: 0;
+            padding: 0;
+          }
+        }
+      }
+
+      .current {
+        background: mat-color($primary-light);
+        padding: 0 13px 3px !important;
+        color: $white;
+        border: 1px solid $grey-300;
+        line-height: 24px;
+
+        span {
+          color: $white;
+          font-size: 12px;
+        }
+      }
+
+      .pagination-previous {
+        a {
+          color: $grey-600;
+        }
+      }
+
+      .pagination-next {
+        a {
+          color: $grey-600;
+        }
+      }
+
+      .pagination-previous.disabled {
+        border: 1px solid $grey-300;
+        margin: 0;
+
+        span {
+          margin: 0;
+          color: $grey-400;
+          padding: 0;
+        }
+      }
+
+      .pagination-next.disabled {
+        border: 1px solid $grey-300;
+        margin: 0;
+
+        span {
+          margin: 0;
+          color: $grey-400;
+          padding: 0;
+        }
+      }
+
+      a {
+        background: $white;
+        border: 1px solid $grey-300;
+        margin: 0;
+
+        span {
+          color: $grey-600;
+        }
+      }
+
+      .disabled {
+        padding: 0 13px 3px;
+        color: $grey-400;
+        border: 1px solid $grey-300;
+        line-height: 24px;
+
+        span {
+          color: $grey-600;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

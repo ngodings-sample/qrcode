@@ -1,0 +1,20 @@
+.blockquote {
+  width: $full;
+  border-left: 3px solid;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.blockquote.no-border {
+  width: $full;
+  border-left: 0;
+  border-radius: 5px;
+  padding: 10px 15px;
+}
+
+.blockquote.date {
+  width: $full;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+}

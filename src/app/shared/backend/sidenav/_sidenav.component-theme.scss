@@ -1,0 +1,47 @@
+@import '../../../../assets/styles/color';
+@mixin sidenav($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .button {
+    border-top: 1px solid $grey-200;
+
+    a.primary {
+      background: mat-color($primary-light);
+      color: $white;
+
+      .mat-button-focus-overlay {
+        background-color: transparent;
+      }
+    }
+  }
+
+  h3 {
+    background: rgba(mat-color($foreground, secondary-text), .32);
+    color: white;
+  }
+
+  li {
+    border-color: rgba(mat-color($foreground, secondary-text), .06);
+    color: mat-color($foreground, secondary-text);
+
+    > a {
+      color: mat-color($foreground, secondary-text);
+
+      &.is-selected,
+      &:focus,
+      &:hover {
+        background: mat-color($background, background);
+        color: mat-color($primary);
+      }
+
+      &.item-selected {
+        background: mat-color($background, background);
+        color: mat-color($primary);
+      }
+    }
+  }
+}

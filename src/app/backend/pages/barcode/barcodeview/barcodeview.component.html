@@ -1,0 +1,71 @@
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <simple-notifications [options]="options"></simple-notifications>
+  <md-card>
+    <md-card-content>
+      <div class="action-top">
+        <button md-button md-raised-button routerLink="/admin/barcode/create">Add {{getTitle()}}</button>
+        <div class="search-view-icon"> <i class="material-icons md-24 middle">search</i></div>
+        <fieldset class="search-view">
+          <input type="text" class="input" placeholder="Search by Name" [(ngModel)]="filter">
+        </fieldset>
+      </div>
+      <div class="table-responsive">
+        <table class="table-view">
+          <thead>
+            <tr>
+              <td width=100>Download QR Code</td>
+              <td width=160>Barcode Id</td>
+              <td>Name</td>
+              <td class="text-center action">Action</td>
+            </tr>
+          </thead>
+          <tbody *ngIf="barcodes | async; let barcode; else loading">
+            <tr *ngFor="let barcode of (barcodes | async) | BarcodeFilter: filter | paginate: config">
+              <td><a target="_blank" href="{{ barcode.barcode.downloadURL }}" class="plus" md-button md-raised-button>Download QR Code</a></td>
+              <td>{{ barcode.barcode_id }}</td>
+              <td>{{ barcode.barcode_name }}</td>
+              <td class="text-center action">
+                <button mdTooltip="Edit {{ barcode.barcode_name }}" [mdTooltipPosition]="positionBelow" md-icon-button class="md-card-button" routerLink="/admin/barcode/update/{{ barcode.barcode_name }}"><i class="material-icons">mode_edit</i></button>
+                <button mdTooltip="Detail {{ barcode.barcode_name }}" [mdTooltipPosition]="positionBelow" md-icon-button class="md-card-button" routerLink="/admin/barcode/detail/{{ barcode.barcode_name }}"><i class="material-icons">zoom_in</i></button>
+                <button (click)="deleteDialog(barcode.$key, barcode.barcode_name, barcode.barcode.fullPath)" mdTooltip="Delete {{ barcode.barcode_name }}" [mdTooltipPosition]="positionBelow" md-icon-button class="md-card-button"><i class="material-icons">delete</i></button>
+              </td>
+            </tr>
+          </tbody>
+          <ng-template #loading>
+            <tbody>
+              <tr>
+                <td class="text-center" colspan="5">
+                  Loading Data...
+                </td>
+              </tr>
+            </tbody>
+          </ng-template>
+          <tbody *ngIf="((barcodes | async) | BarcodeFilter: filter)?.length===0 && (barcodes | async)?.length > 0">
+            <tr>
+              <td class="text-center" colspan="5">
+                Search data not found
+              </td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr *ngIf="(barcodes | async)?.length === 0">
+              <td class="text-center" colspan="5">Data is still empty</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </md-card-content>
+    <div class="md-card-footer-view">
+      <pagination-controls class="app-pagination" [id]="config.id" [previousLabel]="labels.previousLabel" [nextLabel]="labels.nextLabel" (pageChange)="onPageChange($event)"></pagination-controls>
+      <span> Rows per pages : </span>
+      <select [(ngModel)]="config.itemsPerPage" class="page">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+      <span>{{ (barcodes | async)?.length }} Total rows</span>
+    </div>
+  </md-card>
+</div>

@@ -1,0 +1,40 @@
+@import '../../../../assets/styles/color';
+@mixin page-header($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .page-header-body {
+    background: mat-color($primary, 600);
+  }
+
+  .page-title {
+    p {
+      color: $white;
+    }
+  }
+
+  .sidenav-toggle {
+    md-icon {
+      color: $white;
+    }
+  }
+
+  .sidenav-toggle:hover {
+    background: mat-color($primary);
+    transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+
+    .mat-button-focus-overlay {
+      background-color: transparent;
+    }
+
+    md-icon {
+      color: $white;
+    }
+  }
+}

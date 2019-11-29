@@ -1,0 +1,30 @@
+<div class="md-dialog-title">
+  <span>Delete Submenu in Menu</span>
+  <div class="action-dialog-right">
+    <button class="close-dialog" (click)="dialogRef.close();" md-icon-button><i class="material-icons">close</i></button>
+  </div>
+</div>
+<div class="md-dialog-content">
+  <div class="blockquote no-border danger margin-top-3">
+    <table>
+      <tr>
+        <td class="vertical-top" width=50>
+          <i class="material-icons md-24">warning</i>
+        </td>
+        <td>
+          After you delete an Submenu in Menu, it's permanently deleted. Submenu in Menu can't be undeleted.
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="title-dialog">
+    Submenu Name
+  </div>
+  <div class="subtitle-dialog">
+    {{ (SubMenuBackend | async)?.submenu_name }}
+  </div>
+</div>
+<div class="md-dialog-action">
+  <button (click)="dialogRef.close();" md-button class="default">Cancel</button>
+  <button (click)="dialogRef.close();delete(menubackendID, SubMenuBackend);" md-button class="warn">Delete</button>
+</div>

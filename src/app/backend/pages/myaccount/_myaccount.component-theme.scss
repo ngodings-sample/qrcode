@@ -1,0 +1,73 @@
+@import '../../../../assets/styles/color';
+@import '../../../../assets/styles/constants';
+@mixin myaccount($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .title.red {
+    color: $red-700;
+  }
+
+  .myaccount {
+    img {}
+
+    .title {
+      color: $grey-700;
+    }
+
+    md-card {}
+  }
+
+  .action-top {
+    background: $grey-50;
+
+    button {
+      background-color: mat-color($primary-light);
+      color: $white;
+
+      .md-button-focus-overlay {
+        background-color: transparent;
+      }
+    }
+
+    button:hover {
+      background-color: mat-color($primary);
+      color: $white;
+      transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -webkit-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+    }
+  }
+
+  .action-right {
+    button {
+      background: mat-color($primary-light);
+      color: $white;
+
+      .md-button-focus-overlay {
+        background-color: transparent;
+      }
+    }
+
+    button:hover {
+      background: mat-color($primary);
+      transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -webkit-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+    }
+  }
+
+  .a {
+    background: $red-400;
+    color: $white;
+
+    i {
+      color: $white;
+    }
+  }
+}

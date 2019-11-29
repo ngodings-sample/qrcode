@@ -1,0 +1,35 @@
+<div *ngIf="menubackends | async; let menubackend; else loading">
+  <div *ngFor="let menubackend of (menubackends | async)">
+    <h3>
+      {{ menubackend.menu_name | translate | uppercase }}
+    </h3>
+    <ul>
+      <li *ngFor="let submenubackend of menubackend.Data">
+        <a routerLink="{{(submenubackend | async)?.submenu_url}}"><i class="material-icons md-18">{{(submenubackend | async)?.submenu_icon}}</i>{{ (submenubackend | async)?.submenu_name | translate | titlecase }}</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div *ngIf="(menubackends | async)?.length === 0">
+  <div>
+    <h3>
+      Menu
+    </h3>
+    <ul>
+      <li>
+        <a routerLink="/admin/menu"><i class="material-icons md-18">menu</i>Menu</a>
+      </li>
+      <li>
+        <a routerLink="/admin/submenu"><i class="material-icons md-18">subject</i>Submenu</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="button">
+  <a class="primary" target="_blank" href="https://analytics.google.com/analytics/web/" md-button md-raised-button>Google Analytic</a>
+</div>
+<ng-template #loading>
+  <h3>
+    Loading Data...
+  </h3>
+</ng-template>

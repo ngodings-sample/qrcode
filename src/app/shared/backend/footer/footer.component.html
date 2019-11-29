@@ -1,0 +1,25 @@
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <footer class="footer" *ngIf="websites | async; let website; else loading">
+    <div>
+      <div class="copyright">
+        <p *ngFor="let website of (websites | async)">
+          Powered by {{ website.website_name }} © {{ website.website_post }}, All rights reserved. Design and Development by {{ website.website_author | titlecase }}
+        </p>
+        <p *ngIf="(websites | async)?.length === 0">
+          Powered by Website Name © Website Post, All rights reserved. Design and Development by Author
+        </p>
+      </div>
+    </div>
+  </footer>
+  <ng-template #loading>
+    <footer class="footer">
+      <div>
+        <div class="copyright">
+          <p>
+            Loading Data...
+          </p>
+        </div>
+      </div>
+    </footer>
+  </ng-template>
+</div>

@@ -1,0 +1,62 @@
+<simple-notifications [options]="options"></simple-notifications>
+<div class="col-md-4 col-sm-3"></div>
+<div class="col-md-4 col-sm-6 login-content">
+  <div class="text-center">
+    <img src="../../assets/images/favicon/logo_600x600.png" />
+  </div>
+  <h2 class="text-center">Login <span>Administrator</span></h2>
+  <md-card class="login-body">
+    <form [formGroup]="form" autocomplete="off" novalidate>
+      <md-card-content class="margin-top-20">
+        <fieldset>
+          <label class="input">Email</label>
+          <input class="input" mdInput type="text" formControlName="email" name="email" [maxlength]="50">
+          <div class="information-error" contextmenu="" *ngIf="form.get('email').hasError('required') && form.get('email').touched">
+            Email address is required
+            <div class="right">
+              <i class="material-icons md-14 middle">warning</i>
+            </div>
+          </div>
+          <div class="information-error" contextmenu="" *ngIf="form.get('email').hasError('maxlength')">
+            Maximum of 50 characters
+            <div class="right">
+              <i class="material-icons md-14 middle">warning</i>
+            </div>
+          </div>
+          <div class="information-error" contextmenu="" *ngIf="form.get('email').errors?.email">
+            Please enter valid Email<br />Example : ngodings@gmail.com
+            <div class="right">
+              <i class="material-icons md-14 middle">warning</i>
+            </div>
+          </div>
+        </fieldset>
+        <fieldset class="margin-top-10">
+          <label class="input">Password</label>
+          <input class="input" type="password" formControlName="password" name="password" [maxlength]="50">
+          <div class="information-error" contextmenu="" *ngIf="form.get('password').hasError('required') && form.get('password').touched">
+            Password is required
+            <div class="right">
+              <i class="material-icons md-14 middle">warning</i>
+            </div>
+          </div>
+          <div class="information-error" contextmenu="" *ngIf="form.get('password').hasError('minlength')">
+            Minimum of 4 characters
+            <div class="right">
+              <i class="material-icons md-14 middle">warning</i>
+            </div>
+          </div>
+          <div class="information-error" contextmenu="" *ngIf="form.get('password').hasError('maxlength')">
+            Maximum of 50 characters
+            <div class="right">
+              <i class="material-icons md-14 middle">warning</i>
+            </div>
+          </div>
+        </fieldset>
+      </md-card-content>
+      <md-card-actions>
+        <button md-button md-raised-button class="login-button" [disabled]="!form.valid" (click)="login()">Login</button>
+      </md-card-actions>
+    </form>
+  </md-card>
+</div>
+<div class="col-md-4 col-sm-3"></div>

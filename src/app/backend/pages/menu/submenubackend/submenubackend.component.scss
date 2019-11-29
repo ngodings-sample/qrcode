@@ -1,0 +1,74 @@
+@import '../../../../../assets/styles/variables';
+@import '../../../../../assets/styles/constants';
+@import '../../../../../assets/styles/crud/view';
+@import '../../../../../assets/styles/crud/create';
+@import '../../../../../assets/styles/crud/detail';
+@import '../../../../../assets/styles/crud/md-dialog';
+@import '../../../../../assets/styles/crud/input';
+
+button.button-print {
+  min-width: 34px !important;
+  @media screen and (max-width: $tablet) {
+    margin-top: 10px !important;
+  }
+}
+
+button.button-print.two {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.export {
+  float:right;
+  margin-top: -85px;
+  @media screen and (max-width: $tablet) {
+    margin-top: -96px;
+  }
+  @media screen and (max-width: $phone) {
+    margin-top: -100px;
+  }
+  @media screen and (max-width: $small-phone) {
+    float:none;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+}
+
+md-card {
+  padding: 0;
+  margin: 0;
+
+  .md-card-content {
+    padding: 30px 20px 20px;
+  }
+}
+
+.action-top {
+  padding: 20px;
+
+  button {
+    float: right;
+    margin-top: -4px;
+    @media screen and (max-width: $phone) {
+      width: 100%;
+    }
+  }
+}
+
+.action-right {
+  float: right;
+  @media screen and (max-width: $small-phone) {
+    float: none;
+  }
+
+  button {
+    @media screen and (max-width: $phone) {
+      width: 100%;
+    }
+  }
+}
+
+.table-responsive {
+  border: 0;
+}

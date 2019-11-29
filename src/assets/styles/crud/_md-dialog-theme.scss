@@ -1,0 +1,138 @@
+@import '../color';
+@import '../constants';
+
+@mixin md-dialog($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .md-dialog-title {
+    .action-dialog-right {
+      button.close-dialog {
+        background: $white;
+        color: $grey-700;
+
+        .mat-button-focus-overlay {
+          background-color: transparent;
+        }
+      }
+
+      button.close-dialog:hover {
+        color: $black;
+        background: $white;
+        transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
+        -o-transition: all 0.4s ease-in-out;
+      }
+    }
+  }
+
+  .md-dialog-content {
+    .title-dialog {
+      color: $grey-600;
+    }
+
+    .subtitle-dialog {
+      color: $grey-800;
+    }
+  }
+
+  .md-dialog-action {
+    button.warn {
+      background: $red-400;
+      color: $white;
+
+      .mat-button-focus-overlay {
+        background-color: transparent;
+      }
+    }
+
+    button.warn:hover {
+      color: $white;
+      background: $red-500;
+      transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -webkit-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+
+      .mat-button-focus-overlay {
+        background-color: transparent;
+      }
+    }
+    button.warn[disabled] {
+      background: $grey-200;
+      color: $grey-600;
+
+    }
+    button.warn[disabled]:hover {
+      background: $grey-200;
+      color: $grey-600;
+
+    }
+    button[disabled].primary {
+      background: transparent;
+      color: #888;
+    }
+
+    button[disabled].primary:hover {
+      background: transparent;
+      color: #888;
+    }
+
+    button.primary {
+      background: mat-color($primary-light);
+      color: $white;
+
+      .mat-button-focus-overlay {
+        background-color: transparent;
+      }
+    }
+
+    button.primary:hover {
+      color: $white;
+      background:  mat-color($primary);
+      transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -webkit-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+
+      .mat-button-focus-overlay {
+        background-color: transparent;
+      }
+    }
+
+    button.default {
+      background: transparent;
+      color: $grey-600;
+
+      .mat-button-focus-overlay {
+        background-color: transparent;
+      }
+    }
+    button.default[disabled] {
+      background: $grey-200;
+      color: $grey-600;
+
+    }
+    button.default[disabled]:hover {
+      background: $grey-200;
+      color: $grey-600;
+
+    }
+    button.default:hover {
+      color: $grey-800;
+      background: $grey-200;
+      transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -webkit-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+
+      .mat-button-focus-overlay {
+        background-color: transparent;
+      }
+    }
+  }
+}

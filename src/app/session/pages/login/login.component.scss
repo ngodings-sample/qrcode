@@ -1,0 +1,69 @@
+@import '../../../../assets/styles/variables';
+@import '../../../../assets/styles/constants';
+@import '../../../../assets/styles/crud/input';
+
+.login-content {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  @media (max-width:$tablet) {
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  @media (max-width:$phone) {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  img {
+    width: 100px;
+  }
+
+  h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+  }
+
+  .login-body {
+    width: 100%;
+
+    md-card-actions {
+      padding: 15px 15px 0;
+      @media (max-width:$phone) {
+        padding: 15px 10px 0;
+      }
+    }
+
+    form {
+      margin: 0;
+      padding: 0;
+    }
+
+    button {
+      width: $full;
+      text-transform: none;
+
+      img {
+        width: 20px;
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+md-card.message {
+  margin: 0;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.messageWarning {
+  width: $full;
+  font-size: 12px;
+  padding: 10px;
+
+  i {
+    vertical-align: middle;
+    margin-top: -3px;
+  }
+}

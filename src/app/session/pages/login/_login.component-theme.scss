@@ -1,0 +1,150 @@
+@import '../../../../assets/styles/color';
+@mixin login($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .login-content {
+    h2 {
+      span {
+        color: mat-color($primary-light);
+      }
+    }
+
+    a {
+      color: mat-color($primary-light);
+    }
+
+    a:hover {
+      color: mat-color($primary);
+      transition: all 0.4s ease-in-out;
+      -moz-transition: all 0.4s ease-in-out;
+      -webkit-transition: all 0.4s ease-in-out;
+      -o-transition: all 0.4s ease-in-out;
+    }
+  }
+
+  .messageWarning {
+    color: $white;
+    background: $amber-400;
+    margin-bottom: 10px;
+    border-radius: 4px;
+
+    i {
+      color: $white;
+    }
+  }
+
+  .login-body {
+    md-card-actions {
+      button.login-button[disabled] {
+        background: $grey-200;
+        color: $grey-600;
+
+        .md-button-focus-overlay {
+          background-color: transparent;
+        }
+      }
+
+      button.login-button[disabled]:hover {
+        background: $grey-200;
+        color: $grey-600;
+
+        .md-button-focus-overlay {
+          transition: all 0.4s ease-in-out;
+          -moz-transition: all 0.4s ease-in-out;
+          -webkit-transition: all 0.4s ease-in-out;
+          -o-transition: all 0.4s ease-in-out;
+        }
+      }
+
+      button.login-button {
+        background-color: mat-color($primary-light);
+        color: $white;
+
+        .md-button-focus-overlay {
+          background-color: transparent;
+        }
+      }
+
+      button.login-button:hover {
+        background-color: mat-color($primary);
+        color: $white;
+        transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
+        -o-transition: all 0.4s ease-in-out;
+      }
+    }
+
+    md-card-content {
+      input.input,
+      select.input {
+        border-color: $grey-300;
+        border-top-color: $grey-300;
+        border-right-color: $grey-300;
+        border-bottom-color: $grey-300;
+        border-left-color: $grey-300;
+      }
+
+      input.input:focus,
+      select.input:focus {
+        border-bottom-color: mat-color($primary);
+      }
+
+      input.input:active select.input:active {
+        border-bottom-color: $grey-300;
+      }
+
+      label.input {
+        color: $grey-500;
+      }
+
+      input.input.ng-invalid.ng-touched,
+      select.input.ng-invalid.ng-touched {
+        border-bottom-color: $red-400;
+      }
+
+      input.input.ng-valid.ng-touched,
+      select.input.ng-valid.ng-touched {
+        border-bottom-color: $green-400;
+      }
+
+      input.input.ng-pristine {
+        border-bottom: 1px solid;
+        border-bottom-color: $grey-300;
+      }
+
+      select.page {
+        color: $grey-600;
+      }
+
+      label.file {
+        color: $grey-500;
+      }
+
+      input.file {
+        border-color: $grey-300;
+        border-top-color: $grey-300;
+        border-right-color: $grey-300;
+        border-bottom-color: $grey-300;
+        border-left-color: $grey-300;
+      }
+
+      .file-input::before {
+        color: $white;
+        background: mat-color($primary-light);
+      }
+
+      .file-input:hover::before {
+        background: mat-color($primary);
+        transition: background 0.2s ease-in-out;
+        -moz-transition: background 0.2s ease-in-out;
+        -webkit-transition: background 0.2s ease-in-out;
+        -o-transition: background 0.2s ease-in-out;
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+.md-dialog-title {
+  padding-top: 7px;
+  margin-bottom: 25px;
+
+  span {
+    font-size: 20px;
+  }
+
+  .action-dialog-right {
+    float: right;
+    margin-top: -12px;
+  }
+}
+
+.md-dialog-content {
+  .title-dialog {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-size: 13px;
+  }
+
+  .subtitle-dialog {
+    font-size: 15px;
+  }
+}
+
+.md-dialog-action {
+  margin-top: 15px;
+  float: right;
+
+  button.default {
+    margin-right: 7px;
+  }
+}

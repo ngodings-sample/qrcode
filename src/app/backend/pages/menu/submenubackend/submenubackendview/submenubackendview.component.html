@@ -1,0 +1,74 @@
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <simple-notifications [options]="options"></simple-notifications>
+  <md-card>
+    <md-card-content>
+      <div class="action-top">
+        <button md-button md-raised-button routerLink="/admin/submenu/create">Add {{getTitle()}}</button>
+        <div class="search-view-icon"> <i class="material-icons md-24 middle">search</i></div>
+        <fieldset class="search-view">
+          <input type="text" class="input" placeholder="Search by Submenu Name" [(ngModel)]="filter">
+        </fieldset>
+      </div>
+      <div class="table-responsive">
+        <table class="table-view">
+          <thead>
+            <tr>
+              <td *ngIf="asc ==='active'" width=170 ><a class="" (click)="orderByNameDesc()"><div>Name <i class="material-icons">keyboard_arrow_up</i></div></a></td>
+              <td *ngIf="asc !='active'" width=170 ><a class="" (click)="orderByNameAsc()"><div>Name <i class="material-icons">keyboard_arrow_down</i></div></a></td>
+              <td width=40 class="text-center">Icon</td>
+              <td width=120>Url</td>
+              <td width=190>Last Modified</td>
+              <td class="text-center action">Action</td>
+            </tr>
+          </thead>
+          <tbody *ngIf="submenubackends | async; let submenubackend; else loading">
+            <tr *ngFor="let submenubackend of (submenubackends | async) | SubMenuBackendFilter: filter | paginate: config">
+              <td>{{ submenubackend.submenu_name | titlecase }}</td>
+              <td class="text-center"><i class="material-icons">{{ submenubackend.submenu_icon }}</i></td>
+              <td>{{ submenubackend.submenu_url }}</td>
+              <td>{{ submenubackend.submenu_updated | date }}, {{ submenubackend.submenu_updated | date:'hh:mm:ss a'}}</td>
+              <td class="text-center action">
+                <button mdTooltip="Edit {{ submenubackend.submenu_name }}" [mdTooltipPosition]="positionBelow" md-icon-button class="md-card-button" routerLink="/admin/submenu/update/{{ submenubackend.submenu_name }}"><i class="material-icons">mode_edit</i></button>
+                <button mdTooltip="Detail {{ submenubackend.submenu_name }}" [mdTooltipPosition]="positionBelow" md-icon-button class="md-card-button" routerLink="/admin/submenu/detail/{{ submenubackend.submenu_name }}"><i class="material-icons">zoom_in</i></button>
+                <button (click)="deleteDialog(submenubackend.$key, submenubackend.menubackendsId, submenubackend.submenu_name)" mdTooltip="Delete {{ submenubackend.submenu_name }}" [mdTooltipPosition]="positionBelow" md-icon-button class="md-card-button"><i class="material-icons">delete</i></button>
+              </td>
+            </tr>
+          </tbody>
+          <ng-template #loading>
+            <tbody>
+              <tr>
+                <td class="text-center" colspan="5">
+                  Loading Data...
+                </td>
+              </tr>
+            </tbody>
+          </ng-template>
+          <tbody *ngIf="((submenubackends | async) | SubMenuBackendFilter: filter)?.length===0 && (submenubackends | async)?.length > 0">
+            <tr>
+              <td class="text-center" colspan="5">
+                Search data not found
+              </td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr *ngIf="(submenubackends | async)?.length === 0">
+              <td class="text-center" colspan="5">Data is still empty</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </md-card-content>
+    <div class="md-card-footer-view">
+      <pagination-controls class="app-pagination" [id]="config.id" [previousLabel]="labels.previousLabel" [nextLabel]="labels.nextLabel" (pageChange)="onPageChange($event)"></pagination-controls>
+      <span> Rows per pages : </span>
+      <select [(ngModel)]="config.itemsPerPage" class="page">
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+      </select>
+      <span>{{ (submenubackends | async)?.length }} Total rows</span>
+    </div>
+  </md-card>
+</div>

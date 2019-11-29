@@ -1,0 +1,131 @@
+<div class="col-md-2 col-sm-12 col-xs-12">
+</div>
+<div class="col-md-8 col-sm-12 col-xs-12 margin-top-20">
+  <md-card>
+    <div class="md-card-title">
+      {{ Action }} {{ getTitle() }}
+      <button md-icon-button class="md-card-button"><i class="material-icons md-10">{{ Icon }}</i></button>
+    </div>
+    <md-card-content>
+      <table class="table-create margin-top-30">
+        <tr>
+          <td>
+            <form [formGroup]="barcode" autocomplete="off" novalidate>
+              <fieldset *ngIf="!createdCode" class="margin-bottom-20">
+                <label class="input">Barcode Id</label>
+                <input class="input" type="text" formControlName="barcode_id" name="barcode_id" [maxlength]="30">
+                <div class="information-error" contextmenu="" *ngIf="barcode.get('barcode_id').hasError('required') && barcode.get('barcode_id').touched">
+                  Barcode Id is required
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+                <div class="information-error" contextmenu="" *ngIf="barcode.get('barcode_id').hasError('minlength')">
+                  Minimum of 4 characters
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+                <div class="information-error" contextmenu="" *ngIf="barcode.get('barcode_id').hasError('maxlength')">
+                  Maximum of 30 characters
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+              </fieldset>
+              <button *ngIf="!createdCode" class="primary button-full" md-button md-raised-button color="primary" [disabled]="!barcode.valid"
+                (click)="createCode()">Create Code Barcode</button>
+              <div *ngIf="createdCode">
+                <div class="text-center">
+                  <ngx-qrcode [qrc-value]="createdCode"></ngx-qrcode>
+                </div>
+                <div class="text-center">Barcode Id : {{ this.barcode.value.barcode_id }}</div>
+              </div>
+            </form>
+            <form *ngIf="createdCode" [formGroup]="form" autocomplete="off" novalidate>
+              <fieldset class="margin-top-20">
+                <label class="input">Nama</label>
+                <input class="input" type="text" formControlName="barcode_name" name="barcode_name" [maxlength]="100">
+                <div class="information-error" contextmenu="" *ngIf="form.get('barcode_name').hasError('required') && form.get('barcode_name').touched">
+                  Nama is required
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+                <div class="information-error" contextmenu="" *ngIf="form.get('barcode_name').hasError('minlength')">
+                  Minimum of 4 characters
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+                <div class="information-error" contextmenu="" *ngIf="form.get('barcode_name').hasError('maxlength')">
+                  Maximum of 100 characters
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset class="margin-top-10">
+                <label class="input">Gambar QR Code</label>
+                <input id="file" name="file" type="file" class="file file-input" ngFileSelect (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput">
+                <div class="information-info">
+                  Simpan dulu Gambar QR Code Diatas, lalu Choose a file
+                  <div class="right">
+                    <i class="material-icons md-14 middle">insert_photo</i>
+                  </div>
+                </div>
+                <div *ngFor="let file of files">
+                  <div *ngIf="file.type != 'image/png'">
+                    <div *ngIf="fileName === file.name" class="information-error" contextmenu="">
+                      Foto berformat .png
+                      <div class="right">
+                        <i class="material-icons md-14 middle">warning</i>
+                      </div>
+                    </div>
+                  </div>
+                  <div *ngIf="file.size/1024 /1024 >= 2">
+                    <div *ngIf="fileName === file.name" class="information-error" contextmenu="">
+                      File tidak lebih dari 2Mb
+                      <div class="right">
+                        <i class="material-icons md-14 middle">warning</i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngFor="let file of files">
+                  <div *ngIf="file.type === 'image/png' && file.size/1024 /1024 <= 2">
+                    <div *ngIf="fileName === file.name" class="information-success" contextmenu="">
+                      <div class="right">
+                        <i class="material-icons md-14 middle">check</i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset *ngIf="upload === 'Please wait...'">
+                <label class="input margin-top-20 margin-bottom-5">{{ upload }}</label>
+                <md-progress-bar [mode]="mode"></md-progress-bar>
+              </fieldset>
+              <div class="full margin-top-20">
+                <button (click)="check()" [disabled]="disabled === 'true' || files.length === 0" md-button  color="primary" class="primary">Check</button>
+              </div>
+            </form>
+          </td>
+        </tr>
+      </table>
+    </md-card-content>
+    <div class="md-card-footer">
+      <span *ngIf="checkdone ==='true'">
+        <span  *ngFor="let file of files" >
+          <button *ngIf="fileName === file.name"  class="primary" md-button md-raised-button color="primary" [disabled]="!form.valid || disabled==='true' || file.type != 'image/png'  || file.size/1024 /1024 >= 2" (click)="save(file.size)">Create</button>
+        </span>
+      </span>
+      <button [disabled]="disabled==='true'" md-button md-raised-button class="reset" color="default" (click)="reset()">Reset</button>
+      <div class="action-right">
+        <button [disabled]="disabled==='true'" md-button md-raised-button routerLink="/admin/barcode/view">View {{getTitle()}}</button>
+      </div>
+    </div>
+  </md-card>
+</div>
+<div class="col-md-2 col-sm-12 col-xs-12">
+</div>

@@ -1,0 +1,68 @@
+@import '../../../../assets/styles/variables';
+$sidenav-spacing-unit: 8px;
+$sidenav-width: 240px;
+
+.button {
+  padding: 10px;
+
+  a {
+    width: 100%;
+    text-transform: none;
+  }
+}
+
+h3 {
+  border: none;
+  font-size: 10px;
+  letter-spacing: 1px;
+  line-height: $sidenav-spacing-unit * 3;
+  font-weight: 400;
+  margin: 0;
+  padding: 0 ($sidenav-spacing-unit * 2);
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  margin: 0;
+  padding: 0;
+
+  &:last-child {
+    border-color: transparent;
+  }
+
+  > a {
+    box-sizing: border-box;
+    display: block;
+    font-size: 13px;
+    font-weight: medium 500;
+    font-style: normal;
+    line-height: ($sidenav-spacing-unit * 6) - 1;
+    text-decoration: none;
+    transition: all 0.3s;
+    padding: 0 ($sidenav-spacing-unit * 2);
+    position: relative;
+
+    i {
+      display: inline-flex;
+      vertical-align: middle;
+      margin-top: -3px;
+      margin-right: 10px;
+    }
+
+    &.item-selected {
+      text-decoration: none;
+    }
+  }
+
+  > a:focus {
+    outline: none;
+    text-decoration: none;
+  }
+}

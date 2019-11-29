@@ -1,0 +1,107 @@
+<div class="col-md-2 col-sm-12 col-xs-12">
+</div>
+<div class="col-md-8 col-sm-12 col-xs-12 margin-top-20">
+  <md-card>
+    <div class="md-card-title">
+      {{ Action }} {{ getTitle() }}
+      <button md-icon-button class="md-card-button"><i class="material-icons md-10">{{ Icon }}</i></button>
+    </div>
+    <md-card-content>
+      <form [formGroup]="form" autocomplete="off" novalidate>
+        <table class="table-create margin-top-30">
+          <tr>
+            <td>
+              <fieldset>
+                <div class="col-md-6 padding-left-none">
+                  <label class="input">Submenu Name</label>
+                  <input type="text" class="input" formControlName="submenu_name" name="submenu_name" [maxlength]="25">
+                  <div class="information-error" contextmenu="" *ngIf="form.get('submenu_name').hasError('required') && form.get('submenu_name').touched">
+                    Submenu name is required
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('submenu_name').hasError('minlength')">
+                    Minimum of 4 characters
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('submenu_name').hasError('maxlength')">
+                    Maximum of 25 characters
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 padding-right-none">
+                  <label class="input">Submenu Url</label>
+                  <input class="input" type="text" formControlName="submenu_url" name="submenu_url" [maxlength]="30">
+                  <div class="information-error" contextmenu="" *ngIf="form.get('submenu_url').hasError('required') && form.get('submenu_url').touched">
+                    Submenu url is required
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('submenu_url').hasError('minlength')">
+                    Minimum of 2 characters
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                  <div class="information-error" contextmenu="" *ngIf="form.get('submenu_url').hasError('maxlength')">
+                    Maximum of 30 characters
+                    <div class="right">
+                      <i class="material-icons md-14 middle">warning</i>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset>
+                <label class="input margin-top-20">Submenu Icon</label>
+                <input class="input" type="text" formControlName="submenu_icon" name="submenu_icon" [maxlength]="18">
+                <div class="information-error" contextmenu="" *ngIf="form.get('submenu_icon').hasError('required') && form.get('submenu_icon').touched">
+                  Submenu icon is required
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+                <div class="information-error" contextmenu="" *ngIf="form.get('submenu_icon').hasError('minlength')">
+                  Minimum of 2 characters
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+                <div class="information-error" contextmenu="" *ngIf="form.get('submenu_icon').hasError('maxlength')">
+                  Maximum of 18 characters
+                  <div class="right">
+                    <i class="material-icons md-14 middle">warning</i>
+                  </div>
+                </div>
+                <div class="information-info">
+                  Reference Icon : <a target="_blank" href="https://material.io/icons/">https://material.io/icons/</a>
+                  <div class="right">
+                    <i class="material-icons md-14 middle">link</i>
+                  </div>
+                </div>
+              </fieldset>
+              <fieldset *ngIf="upload === 'Please wait...'">
+                <label class="input margin-top-20 margin-bottom-5">{{ upload }}</label>
+                <md-progress-bar [mode]="mode"></md-progress-bar>
+              </fieldset>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </md-card-content>
+    <div class="md-card-footer">
+      <button class="primary" md-button md-raised-button color="primary" [disabled]="!form.valid || disabled==='true'" (click)="save()">Create</button>
+      <button [disabled]="disabled==='true'" md-button md-raised-button class="reset" color="default" (click)="reset()">Reset</button>
+      <div class="action-right">
+        <button [disabled]="disabled==='true'" md-button md-raised-button routerLink="/admin/submenu/view">View {{getTitle()}}</button>
+      </div>
+    </div>
+  </md-card>
+</div>
+<div class="col-md-2 col-sm-12 col-xs-12">
+</div>

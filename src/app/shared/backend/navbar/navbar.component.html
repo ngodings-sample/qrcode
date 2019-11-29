@@ -1,0 +1,47 @@
+<nav class="navbar" *ngIf="websites | async; let website; else loading">
+  <a class="logo" *ngFor="let website of (websites | async)" md-button routerLink="/admin/home">
+    <div>
+      <div>
+        <img class="navbar-logo" [src]="website.website_logo.downloadURL" />
+        <span>{{ website.website_name }}</span>
+      </div>
+    </div>
+  </a>
+  <a class="logo" md-button routerLink="/admin/home" *ngIf="(websites | async)?.length === 0">
+    <div>
+      <div>
+        <img class="navbar-logo" src="https://firebasestorage.googleapis.com/v0/b/ngodings-98cc2.appspot.com/o/users%2Ffree%2Fdefault.png?alt=media&token=6f188a34-c36e-4829-a25d-265bf91d64aa" />
+        <span>Website Name</span>
+      </div>
+    </div>
+  </a>
+  <div class="navbar-filler logo" *ngFor="let user of (users | async)">
+    <button md-icon-button [mdMenuTriggerFor]="menu">
+      <img [src]="user.photoURL" />
+    </button>
+    <md-menu #menu="mdMenu">
+      <div class="menu">
+        <img [src]="user.photoURL" />
+        <p>
+          {{ user.displayName | titlecase }}
+          <br />
+          <span>{{ user.email }}</span>
+        </p>
+      </div>
+      <div class="menu-button">
+        <button md-button md-raised-button class="warn" (click)="logout()">Sign Out</button>
+      </div>
+    </md-menu>
+  </div>
+</nav>
+<ng-template #loading>
+  <nav class="navbar">
+    <a class="logo" md-button>
+      <div>
+        <div>
+          <span>Loading</span>
+        </div>
+      </div>
+    </a>
+  </nav>
+</ng-template>

@@ -1,0 +1,34 @@
+<div class="md-dialog-title">
+  <span>Add Submenu</span>
+  <div class="action-dialog-right">
+    <button class="close-dialog" (click)="dialogRef.close();" md-icon-button><i class="material-icons">close</i></button>
+  </div>
+</div>
+<div class="md-dialog-content">
+  <form [formGroup]="form" autocomplete="off" novalidate>
+    <table class="table-create plus">
+      <tr>
+        <td>
+          <fieldset>
+            <label class="input">Submenu Name</label>
+            <select class="input" placeholder="Post Type" name="submenubackends" formControlName="submenubackends">
+              <option class="input" *ngFor="let submenubackend of (submenubackends | async)" [value]="submenubackend.$key">
+                {{ submenubackend.submenu_name | titlecase }}
+              </option>
+            </select>
+            <div class="information-error" contextmenu="" *ngIf="form.get('submenubackends').hasError('required') && form.get('submenubackends').touched">
+              Submenu Name is required
+              <div class="right">
+                <i class="material-icons md-14 middle">warning</i>
+              </div>
+            </div>
+          </fieldset>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+<div class="md-dialog-action">
+  <button (click)="dialogRef.close();" md-button class="default">Cancel</button>
+  <button (click)="dialogRef.close();create(menubackendID, menubackendName);" [disabled]="!form.valid" md-button class="primary">Add</button>
+</div>
